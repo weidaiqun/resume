@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>魏代群 · .NET开发  | 个人简历</title>
+    <style>
+        :root {
+            --navy-1: #0b1d33;
+            --navy-2: #122a47;
+            --navy-3: #1a3a5f;
+            --gold: #c2a05c;
+            --gold-light: #dcc38a;
+            --gold-pale: #f3ead6;
+            --ink: #22303e;
+            --ink-soft: #5a6a7a;
+            --bg: #f6f4ef;
+            --card: #ffffff;
+            --line: #e6e2d8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.75;
+            padding: 28px 16px;
+        }
+
+        .serif {
+            font-family: Georgia, "Palatino Linotype", "Noto Serif SC", "Source Han Serif SC", "STZhongsong", "SimSun", serif;
+        }
+
+        .resume-container {
+            max-width: 1120px;
+            margin: 0 auto;
+            background: var(--card);
+            box-shadow: 0 30px 80px rgba(11, 29, 51, 0.18);
+            overflow: hidden;
+        }
+
+        /* ============ 顶部形象区 ============ */
+        .hero {
+            position: relative;
+            background: linear-gradient(135deg, var(--navy-1) 0%, var(--navy-2) 55%, var(--navy-3) 100%);
+            color: #f4f0e6;
+            padding: 58px 56px 46px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            right: -140px;
+            top: -140px;
+            width: 460px;
+            height: 460px;
+            border-radius: 50%;
+            border: 1px solid rgba(194, 160, 92, 0.25);
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            right: -60px;
+            top: -60px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 1px solid rgba(194, 160, 92, 0.18);
+        }
+
+        .hero-inner { position: relative; z-index: 1; }
+
+        .hero-name-row {
+            display: flex;
+            align-items: baseline;
+            gap: 22px;
+            flex-wrap: wrap;
+        }
+
+        .hero-name {
+            font-size: 52px;
+            letter-spacing: 10px;
+            font-weight: 600;
+            color: #fdfaf2;
+        }
+
+        .hero-title {
+            font-size: 19px;
+            letter-spacing: 3px;
+            color: var(--gold-light);
+            border-left: 3px solid var(--gold);
+            padding-left: 14px;
+            line-height: 1.4;
+        }
+
+        .hero-slogan {
+            margin-top: 18px;
+            font-size: 15.5px;
+            color: rgba(244, 240, 230, 0.82);
+            letter-spacing: 1.5px;
+        }
+
+        .hero-slogan b { color: var(--gold-light); font-weight: 600; }
+
+        .hero-contact {
+            margin-top: 22px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .contact-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 16px;
+            border: 1px solid rgba(194, 160, 92, 0.45);
+            border-radius: 999px;
+            font-size: 13.5px;
+            color: #f0e9d8;
+            letter-spacing: 0.5px;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .contact-chip svg { width: 15px; height: 15px; fill: var(--gold-light); flex-shrink: 0; }
+
+        /* 数据条 */
+        .hero-stats {
+            position: relative;
+            z-index: 1;
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-top: 1px solid rgba(194, 160, 92, 0.3);
+            padding-top: 26px;
+        }
+
+        .stat { text-align: center; }
+
+        .stat + .stat { border-left: 1px solid rgba(194, 160, 92, 0.22); }
+
+        .stat-num {
+            font-size: 34px;
+            font-weight: 600;
+            color: var(--gold-light);
+        }
+
+        .stat-num small { font-size: 16px; margin-left: 2px; }
+
+        .stat-label {
+            font-size: 13px;
+            color: rgba(244, 240, 230, 0.72);
+            letter-spacing: 2px;
+            margin-top: 4px;
+        }
+
+        /* ============ 主体布局 ============ */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 0;
+        }
+
+        /* 左侧栏 */
+        .sidebar {
+            background: #faf8f3;
+            border-right: 1px solid var(--line);
+            padding: 40px 30px 46px;
+        }
+
+        /* 右侧主内容 */
+        .content { padding: 40px 46px 50px; }
+
+        /* ============ 区块标题 ============ */
+        .side-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--navy-2);
+            letter-spacing: 3px;
+            margin-bottom: 18px;
+        }
+
+        .side-title::before {
+            content: "";
+            width: 22px;
+            height: 3px;
+            background: var(--gold);
+        }
+
+        .sec-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 21px;
+            font-weight: 700;
+            color: var(--navy-1);
+            letter-spacing: 3px;
+            margin-bottom: 22px;
+        }
+
+        .sec-title::before {
+            content: "";
+            width: 8px;
+            height: 26px;
+            background: linear-gradient(180deg, var(--gold), var(--navy-2));
+            border-radius: 2px;
+        }
+
+        .sec-title .en {
+            margin-left: auto;
+            font-size: 11px;
+            font-weight: 400;
+            color: #b9b2a2;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .section { margin-bottom: 42px; }
+
+        /* ============ 技能组 ============ */
+        .skill-group { margin-bottom: 22px; }
+
+        .skill-group h4 {
+            font-size: 13.5px;
+            color: var(--ink-soft);
+            letter-spacing: 2px;
+            margin-bottom: 9px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .skill-group h4::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: var(--line);
+        }
+
+        .tag-cloud { display: flex; flex-wrap: wrap; gap: 6px; }
+
+        .tag {
+            font-size: 12.5px;
+            padding: 3px 10px;
+            background: #fff;
+            border: 1px solid #ddd6c6;
+            border-radius: 4px;
+            color: #4a5563;
+            letter-spacing: 0.3px;
+        }
+
+        .tag.hl {
+            border-color: var(--gold);
+            color: #8a6d33;
+            background: var(--gold-pale);
+            font-weight: 600;
+        }
+
+        /* ============ 个人简介 ============ */
+        .profile-text {
+            font-size: 15px;
+            color: #37424e;
+            text-align: justify;
+        }
+
+        .profile-text b { color: var(--navy-2); }
+
+        /* ============ 核心优势卡片 ============ */
+        .advantage-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-top: 20px;
+        }
+
+        .adv-card {
+            background: #fbfaf7;
+            border: 1px solid var(--line);
+            border-top: 3px solid var(--gold);
+            padding: 16px 18px 14px;
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+
+        .adv-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(11, 29, 51, 0.1);
+        }
+
+        .adv-card h4 {
+            font-size: 15px;
+            color: var(--navy-2);
+            margin-bottom: 6px;
+            letter-spacing: 1px;
+        }
+
+        .adv-card p {
+            font-size: 13px;
+            color: var(--ink-soft);
+            line-height: 1.65;
+        }
+
+        /* ============ 工作经历时间轴 ============ */
+        .timeline { position: relative; padding-left: 26px; }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 6px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--gold), #d8d2c2);
+        }
+
+        .tl-item { position: relative; margin-bottom: 30px; }
+
+        .tl-item:last-child { margin-bottom: 0; }
+
+        .tl-item::before {
+            content: "";
+            position: absolute;
+            left: -26px;
+            top: 8px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--card);
+            border: 3px solid var(--gold);
+        }
+
+        .tl-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+
+        .tl-head h4 {
+            font-size: 16.5px;
+            color: var(--navy-1);
+        }
+
+        .tl-head h4 span {
+            font-size: 13px;
+            color: var(--gold);
+            font-weight: 600;
+            margin-left: 10px;
+            letter-spacing: 1px;
+        }
+
+        .tl-date {
+            font-size: 12.5px;
+            color: #a09a8a;
+            letter-spacing: 1px;
+            border: 1px solid var(--line);
+            padding: 2px 10px;
+            border-radius: 999px;
+            white-space: nowrap;
+        }
+
+        .tl-body {
+            font-size: 13.8px;
+            color: #47525f;
+            text-align: justify;
+        }
+
+        .tl-body b { color: var(--navy-2); }
+
+        /* ============ 精选项目 ============ */
+        .feature-project {
+            border: 1px solid var(--line);
+            background: #fff;
+            margin-bottom: 18px;
+            overflow: hidden;
+            transition: box-shadow .25s ease, border-color .25s ease;
+        }
+
+        .feature-project:hover {
+            border-color: var(--gold);
+            box-shadow: 0 14px 34px rgba(11, 29, 51, 0.1);
+        }
+
+        .fp-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 14px 20px;
+            background: linear-gradient(90deg, #faf7f0, #fff);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .fp-head h4 {
+            font-size: 16px;
+            color: var(--navy-1);
+            letter-spacing: 1px;
+        }
+
+        .fp-head h4::before {
+            content: "◆";
+            color: var(--gold);
+            font-size: 11px;
+            margin-right: 8px;
+            vertical-align: 2px;
+        }
+
+        .fp-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+
+        .fp-body { padding: 14px 20px 16px; }
+
+        .fp-body p {
+            font-size: 13.8px;
+            color: #47525f;
+            text-align: justify;
+        }
+
+        .fp-body .tech {
+            margin-top: 10px;
+            font-size: 12.5px;
+            color: #8a6d33;
+        }
+
+        .fp-body .tech::before {
+            content: "技术栈 ";
+            color: #a09a8a;
+            letter-spacing: 1px;
+        }
+
+        .fp-body a {
+            color: #1a5fb4;
+            text-decoration: none;
+            border-bottom: 1px dashed #9db8d9;
+        }
+
+        /* ============ 项目集（图库） ============ */
+        .gallery-tools {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .filter-bar { display: flex; gap: 8px; flex-wrap: wrap; }
+
+        .filter-btn {
+            cursor: pointer;
+            font-size: 12.5px;
+            padding: 5px 14px;
+            border: 1px solid var(--line);
+            background: #fff;
+            color: var(--ink-soft);
+            border-radius: 999px;
+            letter-spacing: 1px;
+            transition: all .2s ease;
+        }
+
+        .filter-btn:hover { border-color: var(--gold); color: #8a6d33; }
+
+        .filter-btn.active {
+            background: var(--navy-2);
+            border-color: var(--navy-2);
+            color: #f2ecdd;
+        }
+
+        .toggle-btn {
+            cursor: pointer;
+            font-size: 12.5px;
+            color: #8a6d33;
+            background: transparent;
+            border: 1px solid var(--gold);
+            border-radius: 999px;
+            padding: 5px 16px;
+            letter-spacing: 1px;
+            transition: all .2s ease;
+        }
+
+        .toggle-btn:hover { background: var(--gold-pale); }
+
+        .project-wrap {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 16px;
+        }
+
+        .project-card {
+            border: 1px solid var(--line);
+            background: #fff;
+            overflow: hidden;
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 30px rgba(11, 29, 51, 0.12);
+        }
+
+        /* 缩略图：模糊底图垫底 + 主图完整展示，任何比例都不裁切不变形 */
+        .thumb {
+            position: relative;
+            height: 185px;
+            overflow: hidden;
+            background: #ece9e0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .thumb-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: blur(18px) saturate(0.85) brightness(1.05);
+            transform: scale(1.2);
+        }
+
+        .thumb::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(246, 243, 236, 0.52);
+        }
+
+        .thumb-main {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            padding: 10px 12px;
+            transition: transform .3s ease;
+        }
+
+        .project-card:hover .thumb-main { transform: scale(1.04); }
+
+        .project-card .card-body { padding: 11px 13px 13px; }
+
+        .project-card h4 {
+            font-size: 14px;
+            color: var(--navy-2);
+            margin-bottom: 5px;
+            line-height: 1.45;
+            min-height: 2.6em;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .project-card h4 a { color: inherit; text-decoration: none; }
+        .project-card h4 a:hover { color: #8a6d33; }
+
+        .project-card .meta {
+            font-size: 12px;
+            color: #a09a8a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-card .cat {
+            font-size: 11px;
+            padding: 1px 8px;
+            border-radius: 3px;
+            background: var(--gold-pale);
+            color: #8a6d33;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        /* ============ 自我评价 ============ */
+        .eval-list { list-style: none; }
+
+        .eval-list li {
+            position: relative;
+            padding-left: 24px;
+            font-size: 14px;
+            color: #47525f;
+            margin-bottom: 10px;
+            text-align: justify;
+        }
+
+        .eval-list li::before {
+            content: "✦";
+            position: absolute;
+            left: 2px;
+            top: 1px;
+            color: var(--gold);
+            font-size: 12px;
+        }
+
+        .eval-list b { color: var(--navy-2); }
+
+        /* ============ 页脚 ============ */
+        .resume-footer {
+            background: var(--navy-1);
+            color: rgba(244, 240, 230, 0.55);
+            text-align: center;
+            font-size: 12px;
+            letter-spacing: 3px;
+            padding: 18px;
+        }
+
+        /* ============ 打印按钮 ============ */
+        .print-btn {
+            position: fixed;
+            right: 28px;
+            bottom: 28px;
+            z-index: 99;
+            cursor: pointer;
+            border: none;
+            background: var(--navy-2);
+            color: #f2ecdd;
+            padding: 12px 22px;
+            border-radius: 999px;
+            font-size: 14px;
+            letter-spacing: 2px;
+            box-shadow: 0 10px 26px rgba(11, 29, 51, 0.35);
+            transition: transform .2s ease;
+        }
+
+        .print-btn:hover { transform: translateY(-2px); }
+
+        /* ============ 打印PDF适配 ============ */
+        @media print {
+            body { background: #fff; padding: 0; }
+
+            .resume-container { box-shadow: none; max-width: 100%; }
+
+            .print-btn, .filter-bar, .toggle-btn { display: none !important; }
+
+            .hero, .resume-footer {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .hero { padding: 36px 40px 30px; }
+
+            .section, .tl-item, .feature-project { page-break-inside: avoid; }
+
+            .project-wrap { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+
+            .thumb { height: 150px; }
+
+            .thumb-bg { display: none; }
+        }
+
+        /* ============ 响应式 ============ */
+        @media screen and (max-width: 920px) {
+            .main-layout { grid-template-columns: 1fr; }
+
+            .sidebar { border-right: none; border-bottom: 1px solid var(--line); }
+
+            .content { padding: 30px 22px 40px; }
+
+            .hero { padding: 40px 26px 34px; }
+
+            .hero-name { font-size: 38px; letter-spacing: 6px; }
+
+            .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 18px 0; }
+
+            .stat:nth-child(3) { border-left: none; }
+
+            .advantage-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+
+        <!-- ================= 顶部形象区 ================= -->
+        <header class="hero">
+            <div class="hero-inner">
+                <div class="hero-name-row">
+                    <h1 class="hero-name serif">魏代群</h1>
+                    <div class="hero-title">.NET 开发工程师<br>企业级系统开发</div>
+                </div>
+                <p class="hero-slogan">
+                    <b>13 年</b>软件开发经验 · 深耕 <b>电商 / 支付 / 智慧社区 / ERP</b>
+                </p>
+                <div class="hero-contact">
+                    <span class="contact-chip">
+                        <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+                        183 5420 2086
+                    </span>
+                    <span class="contact-chip">
+                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        552286086@qq.com
+                    </span>
+                    <span class="contact-chip">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5s2.5 1.1 2.5 2.5S13.4 11.5 12 11.5z"/></svg>
+                        山东 · 青岛
+                    </span>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-num serif">13<small>年+</small></div>
+                    <div class="stat-label">软件开发经验</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-num serif">50<small>+</small></div>
+                    <div class="stat-label">项目落地交付</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-num serif">20<small>+</small></div>
+                    <div class="stat-label">后台系统迭代</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-num serif">10<small>+</small></div>
+                    <div class="stat-label">第三方平台对接</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-layout">
+            <!-- ================= 左侧栏 ================= -->
+            <aside class="sidebar">
+                <div class="skill-group">
+                    <div class="side-title serif">专业技能</div>
+
+                    <div class="skill-group">
+                        <h4>后端开发</h4>
+                        <div class="tag-cloud">
+                            <span class="tag hl">C#</span><span class="tag hl">.NET Core</span><span class="tag hl">WebApi</span>
+                            <span class="tag">EF / EF Core</span><span class="tag">QuartzJob</span>
+                            <span class="tag">消息队列 MQ</span><span class="tag">BS / CS</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <h4>前端开发</h4>
+                        <div class="tag-cloud">
+                            <span class="tag hl">TypeScript</span><span class="tag">JavaScript</span><span class="tag">HTML / CSS</span>
+                            <span class="tag hl">EasyUI</span><span class="tag">Bootstrap</span><span class="tag">LayUI</span><span class="tag">ElementUI</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <h4>数据存储</h4>
+                        <div class="tag-cloud">
+                            <span class="tag hl">SQL Server</span><span class="tag hl">MySQL</span><span class="tag">Oracle</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <h4>支付与金融</h4>
+                        <div class="tag-cloud">
+                            <span class="tag hl">微信支付 V3</span><span class="tag hl">电商收付通</span>
+                            <span class="tag">银联商务</span><span class="tag">订单分账</span>
+                            <span class="tag">B扫C / C扫B</span><span class="tag">小程序支付</span><span class="tag">企业微信支付</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <h4>系统集成</h4>
+                        <div class="tag-cloud">
+                            <span class="tag hl">WMS（百洋 / 发网）</span><span class="tag">钉钉</span><span class="tag">企业微信</span>
+                            <span class="tag">阿里云短信</span><span class="tag">腾讯云短信</span><span class="tag">亿美软通</span>
+                            <span class="tag">热敏打印机</span><span class="tag">农商银行物业费批扣</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <div class="side-title serif">职业关键词</div>
+                    <div class="tag-cloud">
+                        <span class="tag hl">后台架构</span><span class="tag hl">独立交付</span>
+                        <span class="tag">需求分析</span><span class="tag">团队协作</span>
+                        <span class="tag">长期维护</span>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- ================= 右侧主内容 ================= -->
+            <main class="content">
+
+                <!-- 个人简介 + 核心优势 -->
+                <div class="section">
+                    <div class="sec-title serif">个人简介<span class="en">Profile</span></div>
+                    <p class="profile-text">
+                        拥有 <b>13 年</b>软件开发与团队协作经验，长期深耕 <b>.NET 技术栈</b>，兼具 BS/CS 双端开发能力。
+                        能独立承担后台管理系统的<b>架构设计与全流程开发</b>，在<b>商城电商、智慧社区、ERP、支付分账</b>等领域具备大量已上线项目积淀；
+                        擅长与支付、仓储、短信、IM 等十余类第三方平台深度对接，是从 0 到 1、从 1 到 N 的<b>可靠交付型工程师</b>。
+                    </p>
+
+                    <div class="advantage-grid">
+                        <div class="adv-card">
+                            <h4>支付金融能力</h4>
+                            <p>微信支付 V3、电商收付通、银联商务分账（B扫C / C扫B / 小程序支付）完整落地经验，覆盖交易、分账、退款全链路。</p>
+                        </div>
+                        <div class="adv-card">
+                            <h4>电商生态经验</h4>
+                            <p>主导小天心商城、预约、管家、智慧云等电商与服务矩阵开发，配套 UEBA 用户分析与数据看板，支撑业务精细化运营。</p>
+                        </div>
+                        <div class="adv-card">
+                            <h4>行业解决方案</h4>
+                            <p>智慧社区（海信信我家、潍坊泰华）、物业收费、ERP 等企业管理软件的完整交付经验，理解行业业务逻辑。</p>
+                        </div>
+                        <div class="adv-card">
+                            <h4>系统集成专家</h4>
+                            <p>百洋 / 发网 WMS、钉钉 / 企业微信通知、三家短信服务商、农商银行批扣、400 呼叫中心、热敏打印等异构系统对接。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 工作经历 -->
+                <div class="section">
+                    <div class="sec-title serif">工作经历<span class="en">Experience</span></div>
+                    <div class="timeline">
+                        <div class="tl-item">
+                            <div class="tl-head">
+                                <h4>青岛儿推铸力品牌管理有限公司<span>高级开发工程师</span></h4>
+                                <span class="tl-date">2018.03 — 至今</span>
+                            </div>
+                            <div class="tl-body">
+                                负责公司整个后台管理系统的<b>开发维护</b>，累计交付 <b>20+ 个系统</b>：进销存、小天心商城、小天心预约、小天心智慧云、小天心管家、用户分析（UEBA）、门店点餐等。<br>
+                                主导<b>支付体系</b>建设：对接银联商务支付与订单分账（B扫C、C扫B、小程序支付）、企业微信支付、微信支付 V3 及<b>电商平台收付通</b>；
+                                打通<b>物流履约链路</b>：对接百洋、发网 WMS 发货；构建<b>消息触达能力</b>：钉钉、企业微信通知及阿里云、腾讯云、亿美软通三渠道短信。
+                            </div>
+                        </div>
+                        <div class="tl-item">
+                            <div class="tl-head">
+                                <h4>青岛聚城网络科技公司<span>软件工程师 → 技术经理</span></h4>
+                                <span class="tl-date">2014 — 2018</span>
+                            </div>
+                            <div class="tl-body">
+                                负责智慧社区、物业收费、ERP、微信公众号、400 呼叫中心等企业级项目开发。<br>
+                                代表案例：<b>海信·信我家智慧社区初版</b>、潍坊世纪泰华泰生活、海信睿海物业、银盛泰、绿岛等；
+                                对接<b>蓬莱、莱阳、五莲等多家农商银行</b>物业费批扣，完成物业客服系统与大量企业管理类项目交付。
+                            </div>
+                        </div>
+                        <div class="tl-item">
+                            <div class="tl-head">
+                                <h4>青岛佳软网络科技<span>软件工程师</span></h4>
+                                <span class="tl-date">2013 — 2014</span>
+                            </div>
+                            <div class="tl-body">
+                                负责 ERP 模块开发，代表项目：青岛青山羊 ERP、青岛优雅纺织 ERP，打下企业信息化系统的工程基本功。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 精选项目 -->
+                <div class="section">
+                    <div class="sec-title serif">精选项目<span class="en">Featured Projects</span></div>
+
+                    <div class="feature-project">
+                        <div class="fp-head">
+                            <h4>小天心数字生态平台群</h4>
+                            <div class="fp-tags"><span class="cat">2019 — 至今</span><span class="cat">核心开发</span></div>
+                        </div>
+                        <div class="fp-body">
+                            <p>
+                                面向儿推门店行业的一体化数字化产品矩阵，涵盖商城、预约（B/C 端）、管家、智慧云、云优选、成长学院、用户评测、数据看板等子系统，
+                                持续迭代 20+ 后台系统，支撑门店经营、用户运营与数据决策全流程。
+                            </p>
+                            <div class="tech">.NET / WebApi / EF / SQL Server / 微信小程序生态 / EasyUI</div>
+                        </div>
+                    </div>
+
+                    <div class="feature-project">
+                        <div class="fp-head">
+                            <h4>平台收付通 · 分账支付体系</h4>
+                            <div class="fp-tags"><span class="cat">2025 — 2026</span><span class="cat">支付金融</span></div>
+                        </div>
+                        <div class="fp-body">
+                            <p>
+                                基于<a href="https://pay.weixin.qq.com/doc/v3/partner/4012086921" target="_blank">微信电商收付通</a>构建平台级收款与分账能力，
+                                并融合银联商务聚合支付（B扫C / C扫B / 小程序支付）与企业微信支付，形成多渠道统一支付中台。
+                            </p>
+                            <div class="tech">微信支付 V3 / 电商收付通 / 银联商务 / 订单分账 / 对账</div>
+                        </div>
+                    </div>
+
+                    <div class="feature-project">
+                        <div class="fp-head">
+                            <h4>WMS 仓储物流履约对接</h4>
+                            <div class="fp-tags"><span class="cat">2024</span><span class="cat">系统集成</span></div>
+                        </div>
+                        <div class="fp-body">
+                            <p>
+                                对接百洋、发网两大 WMS 平台，打通订单推送、发货回传与物流轨迹查询链路；
+                                同步建设多渠道短信通知（阿里云 / 腾讯云 / 亿美软通），保障履约状态实时触达用户。
+                            </p>
+                            <div class="tech">WMS API / MQ / 物流轨迹 / 短信网关</div>
+                        </div>
+                    </div>
+
+                    <div class="feature-project">
+                        <div class="fp-head">
+                            <h4>海信 · 信我家智慧社区 1.0</h4>
+                            <div class="fp-tags"><span class="cat">2016</span><span class="cat">智慧社区</span></div>
+                        </div>
+                        <div class="fp-body">
+                            <p>
+                                参与海信旗下智慧社区平台「信我家」初版开发，同期交付潍坊世纪泰华「泰生活」智慧社区；
+                                并完成多家农商银行物业费批扣、财务凭证接口、400 呼叫中心弹屏等社区配套系统集成。
+                            </p>
+                            <div class="tech">.NET / SQL Server / 银行批扣接口 / 400 呼叫中心</div>
+                        </div>
+                    </div>
+
+                    <div class="feature-project">
+                        <div class="fp-head">
+                            <h4>UEBA 用户分析 · 商城数据看板</h4>
+                            <div class="fp-tags"><span class="cat">2020</span><span class="cat">数据化运营</span></div>
+                        </div>
+                        <div class="fp-body">
+                            <p>
+                                为商城业务构建用户行为分析与经营数据看板，配套用户评测、地推助手等运营工具，
+                                让业务团队的获客与转化决策有数可依。
+                            </p>
+                            <div class="tech">.NET / 报表设计 / 用户行为分析 / H5</div>
+                        </div>
+                    </div>
+
+                    <!--<div class="feature-project">
+                        <div class="fp-head">
+                            <h4>QunSoft（.NET Core 个人项目）</h4>
+                            <div class="fp-tags"><span class="cat">2026</span><span class="cat">个人项目</span></div>
+                        </div>
+                        <div class="fp-body">
+                            <p>
+                                基于 .NET Core 的个人项目，持续打磨新技术实践；另维护个人博客 qdyee，保持技术学习与输出的习惯。
+                            </p>
+                            <div class="tech">.NET Core / EF Core / DI</div>
+                        </div>
+                    </div>-->
+                </div>
+
+                <!-- 项目集 -->
+                <div class="section">
+                    <div class="sec-title serif">项目集<span class="en">Portfolio · 50+ Projects</span></div>
+                    <div class="gallery-tools">
+                        <div class="filter-bar">
+                            <button class="filter-btn active" data-filter="all">全部</button>
+                            <button class="filter-btn" data-filter="0">现任公司</button>
+                            <button class="filter-btn" data-filter="1">早期经历</button>
+                            <button class="filter-btn" data-filter="3">个人项目</button>
+                        </div>
+                        <button class="toggle-btn" id="toggleProject">收起 / 展开列表</button>
+                    </div>
+                    <div id="projectContainer" class="project-wrap">
+                        <!-- JS 自动填充项目卡片 -->
+                    </div>
+                </div>
+
+                <!-- 自我评价 -->
+                <div class="section" style="margin-bottom:0">
+                    <div class="sec-title serif">自我评价<span class="en">Summary</span></div>
+                    <ul class="eval-list">
+                        <li><b>稳定可靠：</b>13 年持续深耕 .NET 生态，现任公司 8 年+ 长期负责核心后台，离职率低、粘性高，是团队的技术压舱石。</li>
+                        <li><b>独立作战：</b>从需求分析、库表设计、接口开发到第三方对接、上线运维，可一人闭环交付完整系统。</li>
+                        <li><b>业务理解：</b>长期与电商、物业、支付行业打交道，懂业务语言，能主动给出技术侧的落地建议。</li>
+                        <li><b>持续进化：</b>从 .NET Framework 到 .NET Core，从 EasyUI 到 TypeScript，技术栈随行业演进不断更新。</li>
+                    </ul>
+                </div>
+            </main>
+        </div>
+
+        <footer class="resume-footer serif">WEI DAIQUN · .NET SENIOR DEVELOPER · THANKS FOR READING</footer>
+    </div>
+
+    <button class="print-btn" onclick="window.print()">打印 / 导出 PDF</button>
+
+    <script>
+        // ================= 项目数据 =================
+        // valid: 0=现任公司(儿推铸力) 1=早期工作经历(聚城/佳软) 3=个人项目
+        const projectList = [
+            { "Title": "海润悦品", "ImgUrl": "images/project/hairunht.png", "url": "", "Date": "2026年", "valid": 0 },
+            { "Title": "平台收付通产品（支付）", "ImgUrl": "images/project/sftapi.png", "url": "https://pay.weixin.qq.com/doc/v3/partner/4012086921", "Date": "2026年", "valid": 0 },
+            { "Title": "海拍客", "ImgUrl": "images/project/haipaige.png", "url": "", "Date": "2025年", "valid": 0 },
+            { "Title": "梁方堂店铺", "ImgUrl": "images/project/lftht.png", "url": "", "Date": "2025年", "valid": 0 },
+            { "Title": "脉诊仪", "ImgUrl": "images/project/maizhenyi.png", "url": "", "Date": "2024年", "valid": 0 },
+            { "Title": "短信/物流查询/百洋-发网 WMS对接", "ImgUrl": "images/project/wms.png", "url": "", "Date": "2024年", "valid": 0 },
+            { "Title": "商城膏滋代理", "ImgUrl": "https://img02.mockplus.cn/idoc/xd/2022-04-27/dfeb2990-c5c6-11ec-9e11-6bdf6a125068.png?x-oss-process=image/resize,w_360,m_lfit/crop,h_220", "url": "", "Date": "2023年", "valid": 0 },
+            { "Title": "教务系统", "ImgUrl": "https://img02.mockplus.cn/idoc/xd/2022-03-25/90484061-1e1c-4d34-aa86-1300d13278ae.png?x-oss-process=image/resize,w_360,m_lfit/crop,h_220", "url": "", "Date": "2022年", "valid": 0 },
+            { "Title": "H5项目/轻加盟报表", "ImgUrl": "https://img02.mockplus.cn/idoc/xd/2021-11-03/34f99a32-de8d-4c2f-bbb3-e972c9a2aa76.png?x-oss-process=image/resize,w_360,m_lfit/crop,h_220", "url": "", "Date": "2021年", "valid": 0 },
+            { "Title": "工单系统/预约", "ImgUrl": "images/project/gengdan.png", "url": "https://app.mockplus.cn/s/wujaPRZc_A6", "Date": "2021年", "valid": 0 },
+            { "Title": "小天心商城", "ImgUrl": "https://img02.mockplus.cn/idoc/ps/2020-10-22/5a398350-1406-11eb-ba67-fdd1c2fe2e1a.png?x-oss-process=image/resize,w_360,m_lfit/crop,h_220", "url": "", "Date": "2019年", "valid": 0 },
+            { "Title": "小天心用户评测", "ImgUrl": "https://img02.mockplus.cn/idoc/xd/2021-05-27/63977c5c-a4c2-494d-8631-883687ffd72f.png?x-oss-process=image/resize,w_360,m_lfit/crop,h_220", "url": "T", "Date": "2021年", "valid": 0 },
+            { "Title": "小天心商城数据看板", "ImgUrl": "https://img02.mockplus.cn/idoc/xd/2021-03-30/5ca6fcd8-4957-40db-beef-16e5810e7af0.png?x-oss-process=image/resize,w_360,m_lfit/crop,h_220", "url": "", "Date": "2020年", "valid": 0 },
+            { "Title": "小天心管家", "ImgUrl": "https://img02.mockplus.cn/idoc/ps/2021-03-08/d05f2a50-7fe8-11eb-90b2-d7b5ff36eb61.png?x-oss-process=image/resize,w_360,m_lfit/crop,h_220", "url": "", "Date": "2020年", "valid": 0 },
+            { "Title": "小天心智慧云", "ImgUrl": "https://img02.mockplus.cn/idoc/ps/2020-06-08/7dc13c20-a938-11ea-b2fa-9fee7a786c29.png?x-oss-process=image/resize,w_360,m_lfit/crop,h_220", "url": "", "Date": "2020年", "valid": 0 },
+            { "Title": "UEBA(用户分析系统)", "ImgUrl": "images/project/yhfx.png", "url": "https://app.mockplus.cn/s/G56zRLCnhDJ", "Date": "2020年", "valid": 0 },
+            { "Title": "地推助手", "ImgUrl": "https://img02.mockplus.cn/idoc/ps/2021-03-08/7190b020-7fe8-11eb-90b2-d7b5ff36eb61.png?x-oss-process=image/resize,w_360,m_lfit/crop,h_220", "url": "", "Date": "2020年", "valid": 0 },
+            { "Title": "企业微信H5", "ImgUrl": "images/project/qywx.png", "url": "https://app.mockplus.cn/s/3ed_-EhQTndh", "Date": "2020年", "valid": 0 },
+            { "Title": "客户协调办公", "ImgUrl": "https://img02.mockplus.cn/idoc/ps/2021-03-30/812f3000-90f6-11eb-be95-cba68d520470.png?x-oss-process=image/resize,w_360,m_lfit/crop,h_220", "url": "", "Date": "2020年", "valid": 0 },
+            { "Title": "小天心云优选", "ImgUrl": "https://img02.mockplus.cn/idoc/ps/2020-09-07/82b68380-f0a9-11ea-ba8a-01f85326caec.png?x-oss-process=image/resize,w_360,m_lfit/crop,h_220", "url": "", "Date": "2020年", "valid": 0 },
+            { "Title": "小天心预约B", "ImgUrl": "https://img02.mockplus.cn/idoc/ps/2020-07-27/70aa6d40-cfbc-11ea-bf3c-9302a407577b.png?x-oss-process=image/resize,w_360,m_lfit/crop,h_220", "url": "", "Date": "2020年", "valid": 0 },
+            { "Title": "小天心预约C", "ImgUrl": "https://img02.mockplus.cn/idoc/ps/2020-07-27/70aa6d40-cfbc-11ea-bf3c-9302a407577b.png?x-oss-process=image/resize,w_360,m_lfit/crop,h_220", "url": "", "Date": "2020年", "valid": 0 },
+            { "Title": "小天心商城(小程序)", "ImgUrl": "https://img02.mockplus.cn/idoc/ps/2020-06-17/23604c80-b04f-11ea-9994-4fe32d944a89.png?x-oss-process=image/resize,w_360,m_lfit/crop,h_220", "url": "", "Date": "2020年", "valid": 0 },
+            { "Title": "小天心成长学院", "ImgUrl": "https://img02.mockplus.cn/idoc/xd/2022-03-25/90484061-1e1c-4d34-aa86-1300d13278ae.png?x-oss-process=image/resize,w_360,m_lfit/crop,h_220", "url": "", "Date": "2021年", "valid": 0 },
+
+            { "Title": "海信信我家1.0智慧社区开发", "ImgUrl": "images/project/xinwojia.jpg", "url": "", "Date": "2016.01 — 2016.06", "valid": 1 },
+            { "Title": "农商银行物业费批扣开发", "ImgUrl": "images/project/nongshang.jpg", "url": "", "Date": "2016.06 — 2017.12", "valid": 1 },
+            { "Title": "烟台佰和物业商城", "ImgUrl": "images/project/baihe.jpg", "url": "", "Date": "2017年", "valid": 1 },
+            { "Title": "潍坊泰华泰生活智慧社区", "ImgUrl": "images/project/taishenghuo.png", "url": "", "Date": "2017年", "valid": 1 },
+            { "Title": "支付功能对接", "ImgUrl": "images/project/pay.jpg", "url": "", "Date": "2017年", "valid": 1 },
+            { "Title": "青岛柏洁洗涤管理后台", "ImgUrl": "images/project/baijie.jpg", "url": "", "Date": "2017年", "valid": 1 },
+            { "Title": "莱州顺义智慧社区APP对接", "ImgUrl": "images/project/zhsq.jpg", "url": "", "Date": "2016年", "valid": 1 },
+            { "Title": "银盛泰明源400客服对接", "ImgUrl": "images/project/yinshengtai.jpg", "url": "", "Date": "2014 — 2017", "valid": 1 },
+            { "Title": "海信睿海物业调查问卷", "ImgUrl": "images/project/diaocha.jpg", "url": "", "Date": "2014 — 2017", "valid": 1 },
+            { "Title": "财务凭证接口对接", "ImgUrl": "images/project/pingzheng.jpg", "url": "", "Date": "2014 — 2017", "valid": 1 },
+            { "Title": "物业商机推荐", "ImgUrl": "images/project/shangji.png", "url": "", "Date": "2014 — 2017", "valid": 1 },
+            { "Title": "APP开发", "ImgUrl": "images/project/app1.jpg", "url": "", "Date": "2014 — 2017", "valid": 1 },
+            { "Title": "聚城管家APP开发（1.0）", "ImgUrl": "images/project/geecityapp.jpg", "url": "", "Date": "2014 — 2017", "valid": 1 },
+            { "Title": "来电呼叫中心弹屏", "ImgUrl": "images/project/geecity.jpg", "url": "", "Date": "2014 — 2017", "valid": 1 },
+            { "Title": "微信平台开发", "ImgUrl": "images/project/weixin.jpg", "url": "", "Date": "2014 — 2017", "valid": 1 },
+            { "Title": "物业收费软件V12", "ImgUrl": "images/project/geecity.jpg", "url": "", "Date": "2014 — 2017", "valid": 1 },
+            { "Title": "物业管理系统V12", "ImgUrl": "images/project/geecity.jpg", "url": "", "Date": "2014 — 2017", "valid": 1 },
+            { "Title": "山东国际贸易大厦考核", "ImgUrl": "images/project/kaohe.jpg", "url": "", "Date": "2014 — 2017", "valid": 1 },
+            { "Title": "聚城软件实施维护", "ImgUrl": "images/project/portfolio-6.jpg", "url": "", "Date": "2014 — 2017", "valid": 1 },
+            { "Title": "优雅纺织ERP", "ImgUrl": "images/project/jiaruan.png", "url": "", "Date": "2014年", "valid": 1 },
+            { "Title": "青山羊ERP", "ImgUrl": "images/project/jiaruan.png", "url": "", "Date": "2014年", "valid": 1 },
+
+            { "Title": "QunSoft (.NET Core)", "ImgUrl": "images/project/qunsoft.png", "url": "", "Date": "2026年", "valid": 3 },
+            { "Title": "微信机器人", "ImgUrl": "images/project/jiqiren1.jpg", "url": "", "Date": "2019年", "valid": 3 },
+            { "Title": "qdyee博客", "ImgUrl": "images/project/qdyee1.jpg", "url": "", "Date": "2017年", "valid": 3 },
+            { "Title": "金子衣橱ERP", "ImgUrl": "images/project/yichu.jpg", "url": "", "Date": "2018年", "valid": 3 },
+            { "Title": "网站LoveLuckyHair", "ImgUrl": "images/project/loveluckyhair.jpg", "url": "", "Date": "2018年", "valid": 3 },
+            { "Title": "车艾美Carsam", "ImgUrl": "images/project/carsam.jpg", "url": "", "Date": "2014年", "valid": 3 }
+        ];
+
+        const catLabel = { 0: "现任公司", 1: "早期经历", 3: "个人项目" };
+
+        // 渲染项目卡片
+        const container = document.getElementById('projectContainer');
+        const FALLBACK = 'data:image/svg+xml,' + encodeURIComponent(
+            '<svg xmlns="http://www.w3.org/2000/svg" width="300" height="150"><rect fill="#f2f0e9" width="300" height="150"/><text x="50%" y="50%" text-anchor="middle" fill="#a09a8a" font-size="13" font-family="sans-serif">暂无预览图</text></svg>'
+        );
+
+        function render(filter) {
+            container.innerHTML = '';
+            projectList.forEach(item => {
+                if (filter !== 'all' && String(item.valid) !== filter) return;
+                const src = item.ImgUrl.trim();
+                let html = `<div class="project-card">`;
+                html += `<div class="thumb">`;
+                html += `<img class="thumb-bg" src="${src}" alt="" aria-hidden="true" loading="lazy" onerror="this.style.display='none'">`;
+                html += `<img class="thumb-main" src="${src}" alt="${item.Title}" loading="lazy" onerror="this.src='${FALLBACK}'">`;
+                html += `</div>`;
+                html += `<div class="card-body">`;
+                if (item.url) {
+                    html += `<h4><a target="_blank" rel="noopener" href="${item.url}">${item.Title}</a></h4>`;
+                } else {
+                    html += `<h4>${item.Title}</h4>`;
+                }
+                html += `<div class="meta"><span>${item.Date}</span><span class="cat">${catLabel[item.valid]}</span></div>`;
+                html += `</div></div>`;
+                container.innerHTML += html;
+            });
+        }
+
+        render('all');
+
+        // 筛选
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.onclick = () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                render(btn.dataset.filter);
+            };
+        });
+
+        // 折叠展开
+        let projectShow = true;
+        document.getElementById('toggleProject').onclick = function () {
+            projectShow = !projectShow;
+            container.style.display = projectShow ? 'grid' : 'none';
+            this.textContent = projectShow ? '收起 / 展开列表' : '已收起，点击展开';
+        }
+    </script>
+</body>
+</html>
