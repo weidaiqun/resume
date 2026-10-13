@@ -950,13 +950,13 @@
 
                 <!-- 项目集 -->
                 <div class="section">
-                    <div class="sec-title serif">项目集<span class="en">Portfolio · 50+ Projects</span></div>
+                    <div class="sec-title serif">项目集<span class="en" id="portfolioCount">Portfolio</span></div>
                     <div class="gallery-tools">
                         <div class="filter-bar">
-                            <button class="filter-btn active" data-filter="all">全部</button>
-                            <button class="filter-btn" data-filter="0">现任公司</button>
-                            <button class="filter-btn" data-filter="1">早期经历</button>
-                            <button class="filter-btn" data-filter="3">个人项目</button>
+                            <button class="filter-btn active" data-filter="all" data-name="全部项目">全部项目</button>
+                            <button class="filter-btn" data-filter="0" data-name="现任公司">现任公司</button>
+                            <button class="filter-btn" data-filter="1" data-name="早期经历">早期经历</button>
+                            <button class="filter-btn" data-filter="3" data-name="个人项目">个人项目</button>
                         </div>
                         <button class="toggle-btn" id="toggleProject">收起 / 展开列表</button>
                     </div>
@@ -1043,6 +1043,19 @@
         ];
 
         const catLabel = { 0: "现任公司", 1: "早期经历", 3: "个人项目" };
+
+        // ================= 数量统计（自动计算） =================
+        const counts = { all: projectList.length };
+        Object.keys(catLabel).forEach(v => {
+            counts[v] = projectList.filter(p => String(p.valid) === v).length;
+        });
+        // 筛选按钮显示数量，如：全部项目（51）
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            const key = btn.dataset.filter;
+            btn.textContent = `${btn.dataset.name}（${counts[key]}）`;
+        });
+        // 标题同步显示总数
+        document.getElementById('portfolioCount').textContent = `Portfolio · ${counts.all} Projects`;
 
         // 渲染项目卡片
         const container = document.getElementById('projectContainer');
