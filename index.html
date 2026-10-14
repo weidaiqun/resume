@@ -310,8 +310,8 @@
                 项目经验
                 <span class="title-ctrl">
                     <span class="view-switch" id="viewSwitch">
-                        <button id="btnImageView" class="active" type="button">图片版</button>
-                        <button id="btnTextView" type="button">文字版</button>
+                        <button id="btnImageView" type="button">图片版</button>
+                        <button id="btnTextView" class="active" type="button">文字版</button>
                     </span>
                     <button class="toggle-btn" id="toggleProject" type="button">收起/展开</button>
                 </span>
@@ -647,7 +647,7 @@
         const btnImage = document.getElementById('btnImageView');
         const btnText = document.getElementById('btnTextView');
         let projectShow = true;
-        let viewMode = 'image'; // image | text
+        let viewMode = 'text'; // image | text，默认文字版
 
         function applyView() {
             container.style.display = (projectShow && viewMode === 'image') ? 'grid' : 'none';
@@ -662,6 +662,7 @@
             projectShow = !projectShow;
             applyView();
         };
+        applyView(); // 初始化：默认展示文字版
     </script>
 </body>
 </html>
