@@ -3,989 +3,329 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>魏代群 · .NET开发  | 个人简历</title>
+    <title>魏代群简历 - .NET开发工程师</title>
     <style>
-        :root {
-            --navy-1: #0b1d33;
-            --navy-2: #122a47;
-            --navy-3: #1a3a5f;
-            --gold: #c2a05c;
-            --gold-light: #dcc38a;
-            --gold-pale: #f3ead6;
-            --ink: #22303e;
-            --ink-soft: #5a6a7a;
-            --bg: #f6f4ef;
-            --card: #ffffff;
-            --line: #e6e2d8;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: "Microsoft YaHei", system-ui, sans-serif;
         }
-
-        html { scroll-behavior: smooth; }
 
         body {
-            font-family: "Microsoft YaHei", "PingFang SC", system-ui, sans-serif;
-            background: var(--bg);
-            color: var(--ink);
-            line-height: 1.75;
-            padding: 28px 16px;
-        }
-
-        .serif {
-            font-family: Georgia, "Palatino Linotype", "Noto Serif SC", "Source Han Serif SC", "STZhongsong", "SimSun", serif;
+            background-color: #f3f4f6;
+            padding: 24px;
+            color: #222;
         }
 
         .resume-container {
-            max-width: 1120px;
+            max-width: 1080px;
             margin: 0 auto;
-            background: var(--card);
-            box-shadow: 0 30px 80px rgba(11, 29, 51, 0.18);
-            overflow: hidden;
+            background: #ffffff;
+            padding: 40px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.08);
         }
 
-        /* ============ 顶部形象区 ============ */
-        .hero {
-            position: relative;
-            background: linear-gradient(135deg, var(--navy-1) 0%, var(--navy-2) 55%, var(--navy-3) 100%);
-            color: #f4f0e6;
-            padding: 58px 56px 46px;
-            overflow: hidden;
+        .header-info {
+            text-align: center;
+            border-bottom: 2px solid #2563eb;
+            padding-bottom: 16px;
+            margin-bottom: 30px;
         }
 
-        .hero::before {
-            content: "";
-            position: absolute;
-            right: -140px;
-            top: -140px;
-            width: 460px;
-            height: 460px;
-            border-radius: 50%;
-            border: 1px solid rgba(194, 160, 92, 0.25);
+            .header-info h1 {
+                font-size: 30px;
+                color: #111827;
+            }
+
+            .header-info p {
+                margin-top: 8px;
+                color: #4b5563;
+                font-size: 16px;
+            }
+
+        .section {
+            margin-bottom: 32px;
         }
 
-        .hero::after {
-            content: "";
-            position: absolute;
-            right: -60px;
-            top: -60px;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            border: 1px solid rgba(194, 160, 92, 0.18);
-        }
-
-        .hero-inner { position: relative; z-index: 1; }
-
-        .hero-name-row {
-            display: flex;
-            align-items: baseline;
-            gap: 22px;
-            flex-wrap: wrap;
-        }
-
-        .hero-name {
-            font-size: 52px;
-            letter-spacing: 10px;
-            font-weight: 600;
-            color: #fdfaf2;
-        }
-
-        .hero-title {
-            font-size: 19px;
-            letter-spacing: 3px;
-            color: var(--gold-light);
-            border-left: 3px solid var(--gold);
-            padding-left: 14px;
-            line-height: 1.4;
-        }
-
-        .hero-slogan {
-            margin-top: 18px;
-            font-size: 15.5px;
-            color: rgba(244, 240, 230, 0.82);
-            letter-spacing: 1.5px;
-        }
-
-        .hero-slogan b { color: var(--gold-light); font-weight: 600; }
-
-        .hero-contact {
-            margin-top: 22px;
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .contact-chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 7px 16px;
-            border: 1px solid rgba(194, 160, 92, 0.45);
-            border-radius: 999px;
-            font-size: 13.5px;
-            color: #f0e9d8;
-            letter-spacing: 0.5px;
-            background: rgba(255, 255, 255, 0.04);
-        }
-
-        .contact-chip svg { width: 15px; height: 15px; fill: var(--gold-light); flex-shrink: 0; }
-
-        /* 数据条 */
-        .hero-stats {
-            position: relative;
-            z-index: 1;
-            margin-top: 40px;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            border-top: 1px solid rgba(194, 160, 92, 0.3);
-            padding-top: 26px;
-        }
-
-        .stat { text-align: center; }
-
-        .stat + .stat { border-left: 1px solid rgba(194, 160, 92, 0.22); }
-
-        .stat-num {
-            font-size: 34px;
-            font-weight: 600;
-            color: var(--gold-light);
-        }
-
-        .stat-num small { font-size: 16px; margin-left: 2px; }
-
-        .stat-label {
-            font-size: 13px;
-            color: rgba(244, 240, 230, 0.72);
-            letter-spacing: 2px;
-            margin-top: 4px;
-        }
-
-        /* ============ 主体布局 ============ */
-        .main-layout {
-            display: grid;
-            grid-template-columns: 320px 1fr;
-            gap: 0;
-        }
-
-        /* 左侧栏 */
-        .sidebar {
-            background: #faf8f3;
-            border-right: 1px solid var(--line);
-            padding: 40px 30px 46px;
-        }
-
-        /* 右侧主内容 */
-        .content { padding: 40px 46px 50px; }
-
-        /* ============ 区块标题 ============ */
-        .side-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 17px;
-            font-weight: 700;
-            color: var(--navy-2);
-            letter-spacing: 3px;
-            margin-bottom: 18px;
-        }
-
-        .side-title::before {
-            content: "";
-            width: 22px;
-            height: 3px;
-            background: var(--gold);
-        }
-
-        .sec-title {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 21px;
-            font-weight: 700;
-            color: var(--navy-1);
-            letter-spacing: 3px;
-            margin-bottom: 22px;
-        }
-
-        .sec-title::before {
-            content: "";
-            width: 8px;
-            height: 26px;
-            background: linear-gradient(180deg, var(--gold), var(--navy-2));
-            border-radius: 2px;
-        }
-
-        .sec-title .en {
-            margin-left: auto;
-            font-size: 11px;
-            font-weight: 400;
-            color: #b9b2a2;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .section { margin-bottom: 42px; }
-
-        /* ============ 技能组 ============ */
-        .skill-group { margin-bottom: 22px; }
-
-        .skill-group h4 {
-            font-size: 13.5px;
-            color: var(--ink-soft);
-            letter-spacing: 2px;
-            margin-bottom: 9px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .skill-group h4::after {
-            content: "";
-            flex: 1;
-            height: 1px;
-            background: var(--line);
-        }
-
-        .tag-cloud { display: flex; flex-wrap: wrap; gap: 6px; }
-
-        .tag {
-            font-size: 12.5px;
-            padding: 3px 10px;
-            background: #fff;
-            border: 1px solid #ddd6c6;
-            border-radius: 4px;
-            color: #4a5563;
-            letter-spacing: 0.3px;
-        }
-
-        .tag.hl {
-            border-color: var(--gold);
-            color: #8a6d33;
-            background: var(--gold-pale);
-            font-weight: 600;
-        }
-
-        /* ============ 个人简介 ============ */
-        .profile-text {
-            font-size: 15px;
-            color: #37424e;
-            text-align: justify;
-        }
-
-        .profile-text b { color: var(--navy-2); }
-
-        /* ============ 核心优势卡片 ============ */
-        .advantage-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 14px;
-            margin-top: 20px;
-        }
-
-        .adv-card {
-            background: #fbfaf7;
-            border: 1px solid var(--line);
-            border-top: 3px solid var(--gold);
-            padding: 16px 18px 14px;
-            transition: transform .25s ease, box-shadow .25s ease;
-        }
-
-        .adv-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 28px rgba(11, 29, 51, 0.1);
-        }
-
-        .adv-card h4 {
-            font-size: 15px;
-            color: var(--navy-2);
-            margin-bottom: 6px;
-            letter-spacing: 1px;
-        }
-
-        .adv-card p {
-            font-size: 13px;
-            color: var(--ink-soft);
-            line-height: 1.65;
-        }
-
-        /* ============ 工作经历时间轴 ============ */
-        .timeline { position: relative; padding-left: 26px; }
-
-        .timeline::before {
-            content: "";
-            position: absolute;
-            left: 6px;
-            top: 8px;
-            bottom: 8px;
-            width: 2px;
-            background: linear-gradient(180deg, var(--gold), #d8d2c2);
-        }
-
-        .tl-item { position: relative; margin-bottom: 30px; }
-
-        .tl-item:last-child { margin-bottom: 0; }
-
-        .tl-item::before {
-            content: "";
-            position: absolute;
-            left: -26px;
-            top: 8px;
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: var(--card);
-            border: 3px solid var(--gold);
-        }
-
-        .tl-head {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 8px;
-        }
-
-        .tl-head h4 {
-            font-size: 16.5px;
-            color: var(--navy-1);
-        }
-
-        .tl-head h4 span {
-            font-size: 13px;
-            color: var(--gold);
-            font-weight: 600;
-            margin-left: 10px;
-            letter-spacing: 1px;
-        }
-
-        .tl-date {
-            font-size: 12.5px;
-            color: #a09a8a;
-            letter-spacing: 1px;
-            border: 1px solid var(--line);
-            padding: 2px 10px;
-            border-radius: 999px;
-            white-space: nowrap;
-        }
-
-        .tl-body {
-            font-size: 13.8px;
-            color: #47525f;
-            text-align: justify;
-        }
-
-        .tl-body b { color: var(--navy-2); }
-
-        /* ============ 精选项目 ============ */
-        .feature-project {
-            border: 1px solid var(--line);
-            background: #fff;
-            margin-bottom: 18px;
-            overflow: hidden;
-            transition: box-shadow .25s ease, border-color .25s ease;
-        }
-
-        .feature-project:hover {
-            border-color: var(--gold);
-            box-shadow: 0 14px 34px rgba(11, 29, 51, 0.1);
-        }
-
-        .fp-head {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 8px;
-            padding: 14px 20px;
-            background: linear-gradient(90deg, #faf7f0, #fff);
-            border-bottom: 1px solid var(--line);
-        }
-
-        .fp-head h4 {
-            font-size: 16px;
-            color: var(--navy-1);
-            letter-spacing: 1px;
-        }
-
-        .fp-head h4::before {
-            content: "◆";
-            color: var(--gold);
-            font-size: 11px;
-            margin-right: 8px;
-            vertical-align: 2px;
-        }
-
-        .fp-tags { display: flex; gap: 6px; flex-wrap: wrap; }
-
-        .fp-body { padding: 14px 20px 16px; }
-
-        .fp-body p {
-            font-size: 13.8px;
-            color: #47525f;
-            text-align: justify;
-        }
-
-        .fp-body .tech {
-            margin-top: 10px;
-            font-size: 12.5px;
-            color: #8a6d33;
-        }
-
-        .fp-body .tech::before {
-            content: "技术栈 ";
-            color: #a09a8a;
-            letter-spacing: 1px;
-        }
-
-        .fp-body a {
-            color: #1a5fb4;
-            text-decoration: none;
-            border-bottom: 1px dashed #9db8d9;
-        }
-
-        /* ============ 项目集（图库） ============ */
-        .gallery-tools {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
+        .section-title {
+            font-size: 20px;
+            color: #2563eb;
+            border-left: 5px solid #2563eb;
+            padding-left: 12px;
             margin-bottom: 16px;
-        }
-
-        .filter-bar { display: flex; gap: 8px; flex-wrap: wrap; }
-
-        .filter-btn {
-            cursor: pointer;
-            font-size: 12.5px;
-            padding: 5px 14px;
-            border: 1px solid var(--line);
-            background: #fff;
-            color: var(--ink-soft);
-            border-radius: 999px;
-            letter-spacing: 1px;
-            transition: all .2s ease;
-        }
-
-        .filter-btn:hover { border-color: var(--gold); color: #8a6d33; }
-
-        .filter-btn.active {
-            background: var(--navy-2);
-            border-color: var(--navy-2);
-            color: #f2ecdd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .toggle-btn {
             cursor: pointer;
-            font-size: 12.5px;
-            color: #8a6d33;
+            font-size: 14px;
+            color: #2563eb;
             background: transparent;
-            border: 1px solid var(--gold);
-            border-radius: 999px;
-            padding: 5px 16px;
-            letter-spacing: 1px;
-            transition: all .2s ease;
+            border: none;
         }
 
-        .toggle-btn:hover { background: var(--gold-pale); }
+        .item-block {
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+            .item-block strong {
+                color: #1f2937;
+            }
+
+        ul.skill-list {
+            padding-left: 24px;
+        }
 
         .project-wrap {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
+            gap: 20px;
         }
 
         .project-card {
-            border: 1px solid var(--line);
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            overflow: hidden;
             background: #fff;
-            overflow: hidden;
-            transition: transform .25s ease, box-shadow .25s ease;
         }
 
-        .project-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 14px 30px rgba(11, 29, 51, 0.12);
+            .project-card img {
+                width: 100%;
+                height: 180px;
+                object-fit: contain;
+                background-color: #f6f6f6;
+                border-bottom: 1px solid #eee;
+            }
+
+            .project-card .card-body {
+                padding: 12px;
+            }
+
+            .project-card h4 {
+                font-size: 15px;
+                margin-bottom: 6px;
+            }
+
+            .project-card .meta {
+                font-size: 13px;
+                color: #6b7280;
+            }
+
+            .project-card a {
+                color: #2563eb;
+                text-decoration: none;
+            }
+        /* 视图切换按钮组 */
+        .title-ctrl {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        /* 缩略图：模糊底图垫底 + 主图完整展示，任何比例都不裁切不变形 */
-        .thumb {
-            position: relative;
-            height: 185px;
-            overflow: hidden;
-            background: #ece9e0;
-            border-bottom: 1px solid var(--line);
-        }
-
-        .thumb-bg {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: blur(18px) saturate(0.85) brightness(1.05);
-            transform: scale(1.2);
-        }
-
-        .thumb::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: rgba(246, 243, 236, 0.52);
-        }
-
-        .thumb-main {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            object-position: center;
-            padding: 10px 12px;
-            transition: transform .3s ease;
-        }
-
-        .project-card:hover .thumb-main { transform: scale(1.04); }
-
-        .project-card .card-body { padding: 11px 13px 13px; }
-
-        .project-card h4 {
-            font-size: 14px;
-            color: var(--navy-2);
-            margin-bottom: 5px;
-            line-height: 1.45;
-            min-height: 2.6em;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
+        .view-switch {
+            display: inline-flex;
+            border: 1px solid #2563eb;
+            border-radius: 6px;
             overflow: hidden;
         }
 
-        .project-card h4 a { color: inherit; text-decoration: none; }
-        .project-card h4 a:hover { color: #8a6d33; }
+            .view-switch button {
+                padding: 4px 14px;
+                font-size: 13px;
+                border: none;
+                background: #fff;
+                color: #2563eb;
+                cursor: pointer;
+            }
 
-        .project-card .meta {
-            font-size: 12px;
-            color: #a09a8a;
+                .view-switch button.active {
+                    background: #2563eb;
+                    color: #fff;
+                }
+
+        /* 文字版项目展示 */
+        #projectTextView {
+            display: none;
+        }
+
+        .tp-group {
+            margin-bottom: 26px;
+        }
+
+        .tp-group-title {
+            font-size: 15px;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 12px;
+            padding-left: 10px;
+            border-left: 4px solid #93c5fd;
+        }
+
+        .tp-item {
+            border: 1px solid #e5e7eb;
+            border-left: 4px solid #2563eb;
+            border-radius: 6px;
+            padding: 12px 16px;
+            margin-bottom: 10px;
+            background: #fafbfc;
+            transition: box-shadow .2s;
+        }
+
+            .tp-item:hover {
+                box-shadow: 0 2px 10px rgba(37,99,235,.12);
+            }
+
+        .tp-head {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 6px;
         }
 
-        .project-card .cat {
-            font-size: 11px;
-            padding: 1px 8px;
-            border-radius: 3px;
-            background: var(--gold-pale);
-            color: #8a6d33;
-            letter-spacing: 1px;
+        .tp-name {
+            font-size: 15px;
+            font-weight: bold;
+            color: #111827;
+        }
+
+            .tp-name a {
+                color: #2563eb;
+                text-decoration: none;
+            }
+
+        .tp-date {
+            font-size: 12.5px;
+            color: #2563eb;
+            background: #eff6ff;
+            border-radius: 10px;
+            padding: 1px 10px;
             white-space: nowrap;
         }
 
-        /* ============ 自我评价 ============ */
-        .eval-list { list-style: none; }
-
-        .eval-list li {
-            position: relative;
-            padding-left: 24px;
-            font-size: 14px;
-            color: #47525f;
-            margin-bottom: 10px;
-            text-align: justify;
+        .tp-desc {
+            font-size: 13.5px;
+            color: #374151;
+            line-height: 1.7;
+            margin-bottom: 4px;
         }
 
-        .eval-list li::before {
-            content: "✦";
-            position: absolute;
-            left: 2px;
-            top: 1px;
-            color: var(--gold);
-            font-size: 12px;
+        .tp-duty {
+            font-size: 13px;
+            color: #6b7280;
+            line-height: 1.7;
         }
 
-        .eval-list b { color: var(--navy-2); }
-
-        /* ============ 页脚 ============ */
-        .resume-footer {
-            background: var(--navy-1);
-            color: rgba(244, 240, 230, 0.55);
-            text-align: center;
-            font-size: 12px;
-            letter-spacing: 3px;
-            padding: 18px;
-        }
-
-        /* ============ 打印按钮 ============ */
-        .print-btn {
-            position: fixed;
-            right: 28px;
-            bottom: 28px;
-            z-index: 99;
-            cursor: pointer;
-            border: none;
-            background: var(--navy-2);
-            color: #f2ecdd;
-            padding: 12px 22px;
-            border-radius: 999px;
-            font-size: 14px;
-            letter-spacing: 2px;
-            box-shadow: 0 10px 26px rgba(11, 29, 51, 0.35);
-            transition: transform .2s ease;
-        }
-
-        .print-btn:hover { transform: translateY(-2px); }
-
-        /* ============ 打印PDF适配 ============ */
+            .tp-duty b {
+                color: #374151;
+            }
+        /* 打印PDF适配 */
         @media print {
-            body { background: #fff; padding: 0; }
-
-            .resume-container { box-shadow: none; max-width: 100%; }
-
-            .print-btn, .filter-bar, .toggle-btn { display: none !important; }
-
-            .hero, .resume-footer {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
+            body {
+                background: #fff;
+                padding: 0;
             }
 
-            .hero { padding: 36px 40px 30px; }
+            .resume-container {
+                box-shadow: none;
+                padding: 0;
+            }
 
-            .section, .tl-item, .feature-project { page-break-inside: avoid; }
+            .toggle-btn {
+                display: none;
+            }
 
-            .project-wrap { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
-
-            .thumb { height: 150px; }
-
-            .thumb-bg { display: none; }
+            .view-switch {
+                display: none;
+            }
         }
 
-        /* ============ 响应式 ============ */
-        @media screen and (max-width: 920px) {
-            .main-layout { grid-template-columns: 1fr; }
+        @media screen and (max-width:768px) {
+            .resume-container {
+                padding: 20px;
+            }
 
-            .sidebar { border-right: none; border-bottom: 1px solid var(--line); }
+            .project-wrap {
+                grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
+            }
 
-            .content { padding: 30px 22px 40px; }
-
-            .hero { padding: 40px 26px 34px; }
-
-            .hero-name { font-size: 38px; letter-spacing: 6px; }
-
-            .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 18px 0; }
-
-            .stat:nth-child(3) { border-left: none; }
-
-            .advantage-grid { grid-template-columns: 1fr; }
+            .project-card img {
+                height: 160px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="resume-container">
-
-        <!-- ================= 顶部形象区 ================= -->
-        <header class="hero">
-            <div class="hero-inner">
-                <div class="hero-name-row">
-                    <h1 class="hero-name serif">魏代群</h1>
-                    <div class="hero-title">.NET 开发工程师<br>企业级系统开发</div>
-                </div>
-                <p class="hero-slogan">
-                    <b>13 年</b>软件开发经验 · 深耕 <b>电商 / 支付 / 智慧社区 / ERP</b>
-                </p>
-                <div class="hero-contact">
-                    <span class="contact-chip">
-                        <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
-                        183 5420 2086
-                    </span>
-                    <span class="contact-chip">
-                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                        552286086@qq.com
-                    </span>
-                    <span class="contact-chip">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5s2.5 1.1 2.5 2.5S13.4 11.5 12 11.5z"/></svg>
-                        山东 · 青岛
-                    </span>
-                </div>
-            </div>
-            <div class="hero-stats">
-                <div class="stat">
-                    <div class="stat-num serif">13<small>年+</small></div>
-                    <div class="stat-label">软件开发经验</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-num serif">50<small>+</small></div>
-                    <div class="stat-label">项目落地交付</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-num serif">20<small>+</small></div>
-                    <div class="stat-label">后台系统迭代</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-num serif">10<small>+</small></div>
-                    <div class="stat-label">第三方平台对接</div>
-                </div>
-            </div>
-        </header>
-
-        <div class="main-layout">
-            <!-- ================= 左侧栏 ================= -->
-            <aside class="sidebar">
-                <div class="skill-group">
-                    <div class="side-title serif">专业技能</div>
-
-                    <div class="skill-group">
-                        <h4>后端开发</h4>
-                        <div class="tag-cloud">
-                            <span class="tag hl">C#</span><span class="tag hl">.NET Core</span><span class="tag hl">WebApi</span>
-                            <span class="tag">EF / EF Core</span><span class="tag">QuartzJob</span>
-                            <span class="tag">消息队列 MQ</span><span class="tag">BS / CS</span>
-                        </div>
-                    </div>
-
-                    <div class="skill-group">
-                        <h4>前端开发</h4>
-                        <div class="tag-cloud">
-                            <span class="tag hl">TypeScript</span><span class="tag">JavaScript</span><span class="tag">HTML / CSS</span>
-                            <span class="tag hl">EasyUI</span><span class="tag">Bootstrap</span><span class="tag">LayUI</span><span class="tag">ElementUI</span>
-                        </div>
-                    </div>
-
-                    <div class="skill-group">
-                        <h4>数据存储</h4>
-                        <div class="tag-cloud">
-                            <span class="tag hl">SQL Server</span><span class="tag hl">MySQL</span><span class="tag">Oracle</span>
-                        </div>
-                    </div>
-
-                    <div class="skill-group">
-                        <h4>支付与金融</h4>
-                        <div class="tag-cloud">
-                            <span class="tag hl">微信支付 V3</span><span class="tag hl">电商收付通</span>
-                            <span class="tag">银联商务</span><span class="tag">订单分账</span>
-                            <span class="tag">B扫C / C扫B</span><span class="tag">小程序支付</span><span class="tag">企业微信支付</span>
-                        </div>
-                    </div>
-
-                    <div class="skill-group">
-                        <h4>系统集成</h4>
-                        <div class="tag-cloud">
-                            <span class="tag hl">WMS（百洋 / 发网）</span><span class="tag">钉钉</span><span class="tag">企业微信</span>
-                            <span class="tag">阿里云短信</span><span class="tag">腾讯云短信</span><span class="tag">亿美软通</span>
-                            <span class="tag">热敏打印机</span><span class="tag">农商银行物业费批扣</span><span class="tag">DevExpress,FastReport报表工具</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-group">
-                    <div class="side-title serif">职业关键词</div>
-                    <div class="tag-cloud">
-                        <span class="tag hl">后台架构</span><span class="tag hl">独立交付</span>
-                        <span class="tag">需求分析</span><span class="tag">团队协作</span>
-                        <span class="tag">长期维护</span>
-                    </div>
-                </div>
-            </aside>
-
-            <!-- ================= 右侧主内容 ================= -->
-            <main class="content">
-
-                <!-- 个人简介 + 核心优势 -->
-                <div class="section">
-                    <div class="sec-title serif">个人简介<span class="en">Profile</span></div>
-                    <p class="profile-text">
-                        拥有 <b>13 年</b>软件开发与团队协作经验，长期深耕 <b>.NET 技术栈</b>，兼具 BS/CS 双端开发能力。
-                        能独立承担后台管理系统的<b>架构设计与全流程开发</b>，在<b>商城电商、智慧社区、ERP、支付分账</b>等领域具备大量已上线项目积淀；
-                        擅长与支付、仓储、短信、IM 等十余类第三方平台深度对接，是从 0 到 1、从 1 到 N 的<b>可靠交付型工程师</b>。
-                    </p>
-
-                    <div class="advantage-grid">
-                        <div class="adv-card">
-                            <h4>支付金融能力</h4>
-                            <p>微信支付 V3、电商收付通、银联商务分账（B扫C / C扫B / 小程序支付）完整落地经验，覆盖交易、分账、退款全链路。</p>
-                        </div>
-                        <div class="adv-card">
-                            <h4>电商生态经验</h4>
-                            <p>主导小天心商城、预约、管家、智慧云等电商与服务矩阵开发，配套 UEBA 用户分析与数据看板，支撑业务精细化运营。</p>
-                        </div>
-                        <div class="adv-card">
-                            <h4>行业解决方案</h4>
-                            <p>智慧社区（海信信我家、潍坊泰华）、物业收费、ERP 等企业管理软件的完整交付经验，理解行业业务逻辑。</p>
-                        </div>
-                        <div class="adv-card">
-                            <h4>系统集成专家</h4>
-                            <p>百洋 / 发网 WMS、钉钉 / 企业微信通知、三家短信服务商、农商银行批扣、400 呼叫中心、热敏打印等异构系统对接。</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 工作经历 -->
-                <div class="section">
-                    <div class="sec-title serif">工作经历<span class="en">Experience</span></div>
-                    <div class="timeline">
-                        <div class="tl-item">
-                            <div class="tl-head">
-                                <h4>青岛儿推铸力品牌管理有限公司<span>高级开发工程师</span></h4>
-                                <span class="tl-date">2018.03 — 至今</span>
-                            </div>
-                            <div class="tl-body">
-                                负责公司整个后台管理系统的<b>开发维护</b>，累计交付 <b>20+ 个系统</b>：进销存、小天心商城、小天心预约、小天心智慧云、小天心管家、用户分析（UEBA）、门店点餐等。<br>
-                                主导<b>支付体系</b>建设：对接银联商务支付与订单分账（B扫C、C扫B、小程序支付）、企业微信支付、微信支付 V3 及<b>电商平台收付通</b>；
-                                打通<b>物流履约链路</b>：对接百洋、发网 WMS 发货；构建<b>消息触达能力</b>：钉钉、企业微信通知及阿里云、腾讯云、亿美软通三渠道短信。
-                            </div>
-                        </div>
-                        <div class="tl-item">
-                            <div class="tl-head">
-                                <h4>青岛聚城网络科技公司<span>软件工程师 → 技术经理</span></h4>
-                                <span class="tl-date">2014 — 2018</span>
-                            </div>
-                            <div class="tl-body">
-                                负责智慧社区、物业收费、ERP、微信公众号、400 呼叫中心等企业级项目开发。<br>
-                                代表案例：<b>海信·信我家智慧社区初版</b>、潍坊世纪泰华泰生活、海信睿海物业、银盛泰、绿岛等；
-                                对接<b>蓬莱、莱阳、五莲等多家农商银行</b>物业费批扣，完成物业客服系统与大量企业管理类项目交付。
-                            </div>
-                        </div>
-                        <div class="tl-item">
-                            <div class="tl-head">
-                                <h4>青岛佳软网络科技<span>软件工程师</span></h4>
-                                <span class="tl-date">2013 — 2014</span>
-                            </div>
-                            <div class="tl-body">
-                                负责 ERP 模块开发，代表项目：青岛青山羊 ERP、青岛优雅纺织 ERP，打下企业信息化系统的工程基本功。
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 精选项目 -->
-                <div class="section">
-                    <div class="sec-title serif">精选项目<span class="en">Featured Projects</span></div>
-
-                    <div class="feature-project">
-                        <div class="fp-head">
-                            <h4>小天心数字生态平台群</h4>
-                            <div class="fp-tags"><span class="cat">2019 — 至今</span><span class="cat">核心开发</span></div>
-                        </div>
-                        <div class="fp-body">
-                            <p>
-                                面向儿推门店行业的一体化数字化产品矩阵，涵盖商城、预约（B/C 端）、管家、智慧云、云优选、成长学院、用户评测、数据看板等子系统，
-                                持续迭代 20+ 后台系统，支撑门店经营、用户运营与数据决策全流程。
-                            </p>
-                            <div class="tech">.NET / WebApi / EF / SQL Server / 微信小程序生态 / EasyUI</div>
-                        </div>
-                    </div>
-
-                    <div class="feature-project">
-                        <div class="fp-head">
-                            <h4>平台收付通 · 分账支付体系</h4>
-                            <div class="fp-tags"><span class="cat">2025 — 2026</span><span class="cat">支付金融</span></div>
-                        </div>
-                        <div class="fp-body">
-                            <p>
-                                基于<a href="https://pay.weixin.qq.com/doc/v3/partner/4012086921" target="_blank">微信电商收付通</a>构建平台级收款与分账能力，
-                                并融合银联商务聚合支付（B扫C / C扫B / 小程序支付）与企业微信支付，形成多渠道统一支付中台。
-                            </p>
-                            <div class="tech">微信支付 V3 / 电商收付通 / 银联商务 / 订单分账 / 对账</div>
-                        </div>
-                    </div>
-
-                    <div class="feature-project">
-                        <div class="fp-head">
-                            <h4>WMS 仓储物流履约对接</h4>
-                            <div class="fp-tags"><span class="cat">2024</span><span class="cat">系统集成</span></div>
-                        </div>
-                        <div class="fp-body">
-                            <p>
-                                对接百洋、发网两大 WMS 平台，打通订单推送、发货回传与物流轨迹查询链路；
-                                同步建设多渠道短信通知（阿里云 / 腾讯云 / 亿美软通），保障履约状态实时触达用户。
-                            </p>
-                            <div class="tech">WMS API / MQ / 物流轨迹 / 短信网关</div>
-                        </div>
-                    </div>
-
-                    <div class="feature-project">
-                        <div class="fp-head">
-                            <h4>海信 · 信我家智慧社区 1.0</h4>
-                            <div class="fp-tags"><span class="cat">2016</span><span class="cat">智慧社区</span></div>
-                        </div>
-                        <div class="fp-body">
-                            <p>
-                                参与海信旗下智慧社区平台「信我家」初版开发，同期交付潍坊世纪泰华「泰生活」智慧社区；
-                                并完成多家农商银行物业费批扣、财务凭证接口、400 呼叫中心弹屏等社区配套系统集成。
-                            </p>
-                            <div class="tech">.NET / SQL Server / 银行批扣接口 / 400 呼叫中心</div>
-                        </div>
-                    </div>
-
-                    <div class="feature-project">
-                        <div class="fp-head">
-                            <h4>UEBA 用户分析 · 商城数据看板</h4>
-                            <div class="fp-tags"><span class="cat">2020</span><span class="cat">数据化运营</span></div>
-                        </div>
-                        <div class="fp-body">
-                            <p>
-                                为商城业务构建用户行为分析与经营数据看板，配套用户评测、地推助手等运营工具，
-                                让业务团队的获客与转化决策有数可依。
-                            </p>
-                            <div class="tech">.NET / 报表设计 / 用户行为分析 / H5</div>
-                        </div>
-                    </div>
-
-                    <!--<div class="feature-project">
-                        <div class="fp-head">
-                            <h4>QunSoft（.NET Core 个人项目）</h4>
-                            <div class="fp-tags"><span class="cat">2026</span><span class="cat">个人项目</span></div>
-                        </div>
-                        <div class="fp-body">
-                            <p>
-                                基于 .NET Core 的个人项目，持续打磨新技术实践；另维护个人博客 qdyee，保持技术学习与输出的习惯。
-                            </p>
-                            <div class="tech">.NET Core / EF Core / DI</div>
-                        </div>
-                    </div>-->
-                </div>
-
-                <!-- 项目集 -->
-                <div class="section">
-                    <div class="sec-title serif">项目集<span class="en" id="portfolioCount">Portfolio</span></div>
-                    <div class="gallery-tools">
-                        <div class="filter-bar">
-                            <button class="filter-btn active" data-filter="all" data-name="全部项目">全部项目</button>
-                            <button class="filter-btn" data-filter="0" data-name="现任公司">现任公司</button>
-                            <button class="filter-btn" data-filter="1" data-name="早期经历">早期经历</button>
-                            <button class="filter-btn" data-filter="3" data-name="个人项目">个人项目</button>
-                        </div>
-                        <button class="toggle-btn" id="toggleProject">收起 / 展开列表</button>
-                    </div>
-                    <div id="projectContainer" class="project-wrap">
-                        <!-- JS 自动填充项目卡片 -->
-                    </div>
-                </div>
-
-                <!-- 自我评价 -->
-                <div class="section" style="margin-bottom:0">
-                    <div class="sec-title serif">自我评价<span class="en">Summary</span></div>
-                    <ul class="eval-list">
-                        <li><b>稳定可靠：</b>13 年持续深耕 .NET 生态，现任公司 8 年+ 长期负责核心后台，离职率低、粘性高，是团队的技术压舱石。</li>
-                        <li><b>独立作战：</b>从需求分析、库表设计、接口开发到第三方对接、上线运维，可一人闭环交付完整系统。</li>
-                        <li><b>业务理解：</b>长期与电商、物业、支付行业打交道，懂业务语言，能主动给出技术侧的落地建议。</li>
-                        <li><b>持续进化：</b>从 .NET Framework 到 .NET Core，从 EasyUI 到 TypeScript，技术栈随行业演进不断更新。</li>
-                    </ul>
-                </div>
-            </main>
+        <!-- 头部基础信息 -->
+        <div class="header-info">
+            <h1>魏代群 .NET开发工程师</h1>
+            <p>电话：18354202086｜邮箱：552286086@qq.com｜13年软件开发经验</p>
         </div>
-
-        <footer class="resume-footer serif">WEI DAIQUN · .NET SENIOR DEVELOPER · THANKS FOR READING</footer>
+        <!-- 个人简介 -->
+        <div class="section">
+            <div class="section-title">个人简介</div>
+            <div class="item-block">
+                拥有13年软件开发和团队协助经验，深耕.NET开发；熟练C# BS/CS开发 、EF/EFCore、WebApi，熟悉EasyUI，BootStrap前端、SQL Server，MySQL数据库。能独立负责后台管理系统设计开发，具备大量商城、智慧社区、ERP、项目落地经验。
+            </div>
+        </div>
+        <!-- 专业技能 -->
+        <div class="section">
+            <div class="section-title">专业技能</div>
+            <ul class="skill-list item-block">
+                <li>后端：C# BS CS/ .NET Framework  /EF  EF Core / WebApi / QuartzJob / MQ / DI</li>
+                <li>数据库：SQL Server，MySql，Oracle</li>
+                <li>前端：HTML、CSS、JavaScript、TypeScript、EasyUI、(LayUi、Bootstrap、ElementUI了解)</li>
+                <li>支付分账对接：接银联商务支付，订单分账（b扫c,c扫b，小程序支付）,微信支付V3，微信平台收付通开发</li>
+                <li>WMS仓储对接：对接百洋，发网WMS物流发货</li>
+                <li>短信对接：阿里云，亿美软通，腾讯云</li>
+                <li>消息通知：钉钉通知，企业微信通知</li>
+                <li>热敏打印机：xp80c xprint80</li>
+            </ul>
+        </div>
+        <!-- 工作经历 -->
+        <div class="section">
+            <div class="section-title">工作经历</div>
+            <div class="item-block">
+                <strong>青岛儿推铸力品牌管理有限公司｜高级开发工程师｜2018.03 - 至今</strong>
+                <p>负责整个后台管理系统开发维护，20+个开发项目，进销存，小天心商城，小天心预约，小天心智慧云，小天心管家，用户分析，门店点餐等等开发，对接银联商务支付，分账（b扫c,c扫b，小程序支付），企业微信支付业务模块；对接百洋，发网 WMS物流发货、对接钉钉，企业微信消息通知，对接阿里云，腾讯云，亿美软通短信开发</p>
+            </div>
+            <div class="item-block">
+                <strong>青岛聚城网络科技公司｜软件工程师-技术经理｜2014 - 2018</strong>
+                <p>负责智慧社区（案例：海信信我家初版，潍坊世纪泰华）、物业收费（案例：海信睿海物业，银盛泰，绿岛等等）、ERP、微信公众号、400呼叫中心等项目开发；对接多家农商银行物业费批扣（蓬莱，莱阳，五莲等）、物业客服系统，完成大量企业管理类项目交付。</p>
+            </div>
+            <div class="item-block">
+                <strong>青岛佳软网络科技｜软件工程师｜2013-2014</strong>
+                <p>负责ERP模块开发，项目:青岛青山羊，青岛优雅纺织</p>
+            </div>
+        </div>
+        <!-- 项目经验 -->
+        <div class="section">
+            <div class="section-title">
+                项目经验
+                <span class="title-ctrl">
+                    <span class="view-switch" id="viewSwitch">
+                        <button id="btnImageView" class="active" type="button">图片版</button>
+                        <button id="btnTextView" type="button">文字版</button>
+                    </span>
+                    <button class="toggle-btn" id="toggleProject" type="button">收起/展开</button>
+                </span>
+            </div>
+            <div id="projectContainer" class="project-wrap">
+                <!-- JS自动填充项目卡片 -->
+            </div>
+            <div id="projectTextView">
+                <!-- JS自动填充文字版项目（参考Word简历格式：项目名称/时间/项目描述/个人职责） -->
+            </div>
+        </div>
     </div>
-
-    <button class="print-btn" onclick="window.print()">打印 / 导出 PDF</button>
-
     <script>
-        // ================= 项目数据 =================
-        // valid: 0=现任公司(儿推铸力) 1=早期工作经历(聚城/佳软) 3=个人项目
+        // 项目JSON数据
         const projectList = [
             { "Title": "海润悦品", "ImgUrl": "images/project/hairunht.png", "url": "", "Date": "2026年", "valid": 0 },
             { "Title": "平台收付通产品（支付）", "ImgUrl": "images/project/sftapi.png", "url": "https://pay.weixin.qq.com/doc/v3/partner/4012086921", "Date": "2026年", "valid": 0 },
@@ -1010,7 +350,6 @@
             { "Title": "小天心预约B", "ImgUrl": "images/project/xtxyuyue.png", "url": "", "Date": "2020年", "valid": 0 },
             { "Title": "小天心预约C", "ImgUrl": "images/project/xtxyuyue.png", "url": "", "Date": "2020年", "valid": 0 },
             { "Title": "小天心商城(小程序)", "ImgUrl": "images/project/xtxscxcx.png", "url": "", "Date": "2020年", "valid": 0 },
-            { "Title": "小天心成长学院", "ImgUrl": "images/project/jiaowu.png", "url": "", "Date": "2021年", "valid": 0 },
 
             { "Title": "海信信我家1.0智慧社区开发", "ImgUrl": "images/project/xinwojia.jpg", "url": "", "Date": "2016.01 — 2016.06", "valid": 1 },
             { "Title": "农商银行物业费批扣开发", "ImgUrl": "images/project/nongshang.jpg", "url": "", "Date": "2016.06 — 2017.12", "valid": 1 },
@@ -1042,67 +381,287 @@
             { "Title": "车艾美Carsam", "ImgUrl": "images/project/carsam.jpg", "url": "", "Date": "2014年", "valid": 3 }
         ];
 
-        const catLabel = { 0: "现任公司", 1: "早期经历", 3: "个人项目" };
+        // 项目文字版数据（项目描述 + 个人职责）
+        const projectTextData = {
+            /* ===== 儿推项目 ===== */
+            "海润悦品": {
+                desc: "大健康膏滋线上商城，整合商品、订单、会员、优惠券与分销体系，并联动集团ERP完成库存同步与发货",
+                duty: "主导后台系统架构设计开发，打通支付分账与WMS物流发货，实现从下单到售后的全流程数字化运营。"
+            },
+            "平台收付通产品（支付）": {
+                desc: "基于微信支付V3「平台收付通」打造的电商收单分账系统，支持二级商户进件、合单支付、实时分账、退款与提现，打通业务系统与微信资金流的全链路对账。",
+                duty: "团队协作完成从商户进件、支付下单、分账回调到对账单核对的全部接口设计与开发，保障资金流与订单信息流严格一致。"
+            },
+            "海拍客": {
+                desc: "同步海淘产品到小天心商城，完成订单，发货，退款对接。",
+                duty: "同步产品，增加商城多样化产品。"
+            },
+            "梁方堂店铺": {
+                desc: "连锁品牌门店数字化运营系统，覆盖门店点餐、商品库存、会员营销与业绩统计，支持多门店统一管理与经营数据汇总。",
+                duty: "团队协作项目，负责后台管理与门店端核心业务模块开发，设计多门店数据隔离与汇总报表体系。"
+            },
+            "脉诊仪": {
+                desc: "对接中医智能脉诊硬件，实现检测数据的采集、解析、上传与健康报告自动生成，检测档案与会员体系联动，对应公司产品，持续沉淀用户健康数据资产。",
+                duty: "团队协作项目，报告生成引擎开发，打造「一人一方（膏方）」。"
+            },
+            "短信/物流查询/百洋-发网 WMS对接": {
+                desc: "统一消息与物流中台：整合阿里云、腾讯云、亿美软通多短信通道，；对接百洋、发网WMS，实现订单自动推仓、发货回传与物流轨迹查询。",
+                duty: "设计统一网关屏蔽多渠道差异，实现通道智能路由、失败重试与异常告警，保障消息触达率与发货时效。"
+            },
+            "商城膏滋代理": {
+                desc: "膏滋类目的多级分销代理体系，支持代理授权、层级管理、业绩归属与佣金结算，配合营销活动实现代理团队的快速裂变。",
+                duty: "负责代理层级关系模型与佣金结算规则的设计实现，确保业绩分摊准确、可追溯。"
+            },
+            "教务系统": {
+                desc: "连锁门店教务管理系统（小天心成长学院），覆盖课程、排课、录课、课时消课、教师排班与绩效统计。",
+                duty: "团队协作，实现课程学习。"
+            },
+            "H5项目/轻加盟报表": {
+                desc: "面向轻加盟模式的多维经营报表，以H5形式呈现门店销售、会员增长、活动转化等核心指标，帮助加盟商用数据驱动运营决策。",
+                duty: "负责报表数据模型设计与H5端开发，实现核心指标的自动化统计与可视化呈现。"
+            },
+            "工单系统/预约": {
+                desc: "客户服务工单流转系统与门店预约调度平台，支持工单派发、状态跟踪、超时提醒与预约日历管理，让服务过程可控可回溯。",
+                duty: "负责工单状态机与派单规则引擎设计，实现预约时段冲突校验与智能提醒。"
+            },
+            "小天心商城": {
+                desc: "集团核心电商平台，覆盖商品、订单、库存、营销、会员与售后全链路，支持小程序、H5多端触达，是集团线上交易的主阵地。",
+                duty: "核心开发人员，负责订单中心与营销体系的设计实现，并完成与ERP、WMS、支付分账系统的深度集成。"
+            },
+            "小天心用户评测": {
+                desc: "用户成长评测系统，结合答题数据与行为数据输出个性化评测报告，评测结果联动会员标签，为后续精准服务提供依据。",
+                duty: "负责评测流程引擎与报告自动生成开发，实现评测数据与会员体系的打通。"
+            },
+            "小天心商城数据看板": {
+                desc: "商城经营数据实时看板，汇聚销售、流量、转化、复购等核心指标，支持多维度下钻分析，为运营决策提供数据依据。",
+                duty: "负责数据采集方案与看板开发，实现核心经营指标的自动化统计与可视化。"
+            },
+            "小天心管家": {
+                desc: "公司员工办公小程序，整合订单下单，物流跟踪等。",
+                duty: "负责核心业务模块开发，结合流程持续迭代优化。"
+            },
+            "小天心智慧云": {
+                desc: "集团业务中台，统一会员、商品、订单等基础能力，向上支撑商城、预约、管家等多条业务线，避免重复建设、实现数据互通。",
+                duty: "参与中台服务化架构设计与基础能力建设，负责会员中心与商品中心的模型设计和开发。"
+            },
+            "UEBA(用户分析系统)": {
+                desc: "用户行为分析平台（UEBA），统一埋点采集用户在各平台商城、预约、内容等触点的行为数据，构建用户画像与标签体系，输出行为链路分析与运营洞察。",
+                duty: "团队协作，方案设计、数据模型实现与分析看板开发，为精细化运营提供数据支撑。"
+            },
+            "地推助手": {
+                desc: "地推活动管理工具，支持获客登记、转化跟踪与业绩统计，让每一场地推活动的效果可量化、可复盘。",
+                duty: "独立负责设计开发，实现获客—转化链路的全流程跟踪与统计。"
+            },
+            "企业微信H5": {
+                desc: "基于企业微信的H5应用，覆盖客户协调、业务办理与消息通知场景，将内部业务流程移动化。",
+                duty: "负责企微授权、消息推送与H5业务模块开发，打通内部系统与企业微信生态。"
+            },
+            "客户协调办公": {
+                desc: "内部客户协调办公系统，实现跨部门协作、任务流转与过程留痕，提升协同效率。",
+                duty: "负责流程引擎与消息通知模块的设计开发。"
+            },
+            "小天心云优选": {
+                desc: "精选好物商城，围绕用户生命周期设计商品推荐与营销玩法，提升复购率与客单价。",
+                duty: "负责商品与营销模块开发，配合数据看板持续优化选品策略。"
+            },
+            "小天心预约B": {
+                desc: "门店预约B端管理系统，支持排班管理、预约审核、到店核销与预约数据统计，与C端预约数据实时联动。",
+                duty: "负责B端核心链路开发，实现时段库存管理与预约冲突校验。"
+            },
+            "小天心预约C": {
+                desc: "面向用户的在线预约系统（小程序/H5），支持在线选店、选时段、预约提醒与改签撤销，让预约像点外卖一样简单。",
+                duty: "负责C端预约流程与消息提醒开发，保障高峰期预约链路的稳定性。"
+            },
+            "小天心商城(小程序)": {
+                desc: "小天心商城微信小程序端，支持商品浏览、下单支付、会员权益与营销活动，是集团私域流量的核心成交场景。",
+                duty: "负责小程序端页面开发与后台接口设计，保证多端数据一致。"
+            },
+         
+            /* ===== 聚城项目 ===== */
+            "海信信我家1.0智慧社区开发": {
+                desc: "海信集团智慧社区平台1.0版，整合门禁、报修、缴费、社区服务等功能，是海信智慧社区战略的起步之作。",
+                duty: "团队项目，负责对接核心业务模块开发联调。"
+            },
+            "农商银行物业费批扣开发": {
+                desc: "打通物业收费系统与蓬莱、莱阳、五莲等十家农商银行的代扣通道，支持柜台缴费、网上缴费与批量代扣，让业主足不出户完成物业缴费。",
+                duty: "负责银行接口开发与联调上线，保障批扣数据准确与资金对账清晰。"
+            },
+            "烟台佰和物业商城": {
+                desc: "佰和物业旗下社区商城，服务业主日常消费，联动物业积分体系，探索物业增值服务模式。",
+                duty: "负责商城后台与微信端开发，独立完成从调研到上线的全过程。"
+            },
+            "潍坊泰华泰生活智慧社区": {
+                desc: "世纪泰华集团「泰生活」智慧社区平台，覆盖缴费、报修、门禁与会员服务，提升业主生活服务体验。",
+                duty: "负责核心模块开发与上线实施，保障项目按期交付。"
+            },
+            "支付功能对接": {
+                desc: "聚城支付能力建设：对接银联商务扫码/刷卡支付、中信银行、建设银行及微信支付等多渠道，形成统一的支付接入能力。",
+                duty: "负责支付接口的统一封装与多渠道对接联调，沉淀可复用的支付模块。"
+            },
+            "青岛柏洁洗涤管理后台": {
+                desc: "洗涤工厂内部管理系统、生产、配送实现洗涤业务全流程数字化。",
+                duty: "独立负责调研、报价、开发、实施与维护全流程，一人扛下整个项目。"
+            },
+            "莱州顺义智慧社区APP对接": {
+                desc: "莱州顺义智慧社区APP的物业缴费接口，提供小区信息查询与在线缴费能力。",
+                duty: "完全负责接口设计与开发，按期交付上线。"
+            },
+            "银盛泰明源400客服对接": {
+                desc: "银盛泰物业客服系统与明源400呼叫中心对接，实现来电弹屏、通话记录与工单联动，让客服响应更快更准。",
+                duty: "负责与明源系统的对接开发，打通话务与业务数据。"
+            },
+            "海信睿海物业调查问卷": {
+                desc: "面向海信睿海物业业主的满意度调查系统，支持问卷设计、批量发放与结果统计，帮助物业量化服务质量。",
+                duty: "完整负责整个项目，从需求调研到上线运维。"
+            },
+            "财务凭证接口对接": {
+                desc: "用友（T系列/NC系列）、金蝶财务软件凭证导入接口，服务青岛康大、海信睿海、河北源泰、帝华等多家客户，实现业务系统与财务系统的自动化对账。",
+                duty: "负责接口开发、实施与维护，累计支撑数十家客户的财务数字化。"
+            },
+            "物业商机推荐": {
+                desc: "基于微信公众号的物业商机推荐平台，帮助物企发现增值服务机会，拓展社区经营收入。",
+                duty: "负责产品规划与开发，从0到1完成平台搭建。"
+            },
+            "APP开发": {
+                desc: "聚城系列移动端应用开发，覆盖智慧社区与物业服务场景，将物业服务装进业主口袋。",
+                duty: "负责跟进功能开发与版本迭代。"
+            },
+            "聚城管家APP开发（1.0）": {
+                desc: "面向物业管家的移动办公APP（1.0版），支持巡检、报修处理与业主沟通，让管家在外也能高效办公。",
+                duty: "负责核心功能模块开发，保障1.0版本顺利上线。"
+            },
+            "来电呼叫中心弹屏": {
+                desc: "400来电弹屏系统，客服接听瞬间自动呈现来电客户档案与历史服务记录，告别「您贵姓」式尴尬。",
+                duty: "负责弹屏系统与话务系统的对接开发。"
+            },
+            "微信平台开发": {
+                desc: "微信公众号开发平台（类微擎），支撑多个物业公众号的菜单、消息与活动运营，让物企玩转微信生态。",
+                duty: "参与平台核心模块开发，支撑多客户公众号运营。"
+            },
+            "物业收费软件V12": {
+                desc: "聚城物业收费软件第12版，支持批量代扣、柜台收费、票据打印与欠费催缴，是物企收费的得力助手。",
+                duty: "负责核心收费模块的开发与维护，支撑产品持续迭代。"
+            },
+            "物业管理系统V12": {
+                desc: "聚城物业管理系统ERP，涵盖协同办公、客户服务、设备管理、仓库管理、资产管理、合同管理与品质管理等模块，一站式满足物企管理需求。",
+                duty: "负责环境配置、开发、维护与实施，深入客户现场完成交付。"
+            },
+            "山东国际贸易大厦考核": {
+                desc: "山东国际贸易大厦物业绩效考核系统，实现员工与部门绩效的量化考核，让考核有据可依。",
+                duty: "完全负责整个项目，从需求到上线独立交付。"
+            },
+            "聚城软件实施维护": {
+                desc: "聚城全线软件产品的实施与维护，深入数十家物业客户现场，完成部署、培训、升级与问题处理。",
+                duty: "负责软件更新、优化与版本升级，保障客户系统长期稳定运行。"
+            },
+            "优雅纺织ERP": {
+                desc: "纺织企业ERP，覆盖进销存、协同办公、人力资源与设备管理，规范企业管理流程。",
+                duty: "根据项目经理安排参与软件开发与测试，快速成长期的重要历练。"
+            },
+            "青山羊ERP": {
+                desc: "餐饮连锁ERP，含要货单、配送单、配送出库单、门店信息、产品档案、会员管理与充值等功能，支撑连锁门店的日常运转。",
+                duty: "参与整体设计与功能开发测试，完成核心单据模块。"
+            },
+            /* ===== 其他项目 ===== */
+            "QunSoft (.NET Core)": {
+                desc: ".NET Core 快速开发框架，集成权限、日志、缓存、任务调度等通用组件，沉淀多年开发最佳实践，让新项目起步即快人一步。",
+                duty: "独立设计开发并持续维护。"
+            },
+            "微信机器人": {
+                desc: "个人微信机器人研究项目，实现微信好友与群的拉取、消息发送、定时消息与批量消息，探索微信生态的自动化可能性。",
+                duty: "业余兴趣驱动，独立完成全部功能的研究与实现。"
+            },
+            "qdyee博客": {
+                desc: "WordPress 搭建的个人技术博客（qdyee.com），记录开发路上的踩坑与心得。",
+                duty: "独立完成搭建、主题定制与内容运营。"
+            },
+            "金子衣橱ERP": {
+                desc: "服装行业进销存ERP，覆盖款式、库存、订单与客户管理，解决服装生意「款式多、库存乱」的痛点。",
+                duty: "独立负责开发与实施。"
+            },
+            "网站LoveLuckyHair": {
+                desc: "假发品类跨境独立站，支持多语言展示与在线下单，面向海外客户的专业品牌网站。",
+                duty: "负责网站整体开发与上线。"
+            },
+            "车艾美Carsam": {
+                desc: "汽车美容连锁后台管理系统，覆盖客户、订单、套餐与门店管理。",
+                duty: "负责后台管理系统开发。"
+            }
+        };
 
-        // ================= 数量统计（自动计算） =================
-        const counts = { all: projectList.length };
-        Object.keys(catLabel).forEach(v => {
-            counts[v] = projectList.filter(p => String(p.valid) === v).length;
-        });
-        // 筛选按钮显示数量，如：全部项目（51）
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            const key = btn.dataset.filter;
-            btn.textContent = `${btn.dataset.name}（${counts[key]}）`;
-        });
-        // 标题同步显示总数
-        document.getElementById('portfolioCount').textContent = `Portfolio · ${counts.all} Projects`;
-
-        // 渲染项目卡片
+        //渲染项目
         const container = document.getElementById('projectContainer');
-        const FALLBACK = 'data:image/svg+xml,' + encodeURIComponent(
-            '<svg xmlns="http://www.w3.org/2000/svg" width="300" height="150"><rect fill="#f2f0e9" width="300" height="150"/><text x="50%" y="50%" text-anchor="middle" fill="#a09a8a" font-size="13" font-family="sans-serif">暂无预览图</text></svg>'
-        );
+        projectList.forEach(item => {
+            let cardHtml = `<div class="project-card">`;
+            //图片：加载失败显示占位
+            cardHtml += `<img src="${item.ImgUrl}" alt="${item.Title}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22140%22%3E%3Crect fill=%22%23f1f1f1%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 fill=%22%23888%22%3E无图%3C/text%3E%3C/svg%3E'">`;
+            cardHtml += `<div class="card-body">`;
+            if (item.url) {
+                cardHtml += `<h4><a target="_blank" href="${item.url}">${item.Title}</a></h4>`;
+            } else {
+                cardHtml += `<h4>${item.Title}</h4>`;
+            }
+            let ms = "";
+            if (item.valid==0) {
+                ms = "儿推项目";
+            }
+            if (item.valid == 1) {
+                ms = "聚城项目";
+            }
+            if (item.valid == 3) {
+                ms = "其他项目";
+            }
+            cardHtml += `<div class="meta">${item.Date}｜${ms}</div>`;
+            cardHtml += `</div></div>`;
+            container.innerHTML += cardHtml;
+        });
 
-        function render(filter) {
-            container.innerHTML = '';
-            projectList.forEach(item => {
-                if (filter !== 'all' && String(item.valid) !== filter) return;
-                const src = item.ImgUrl.trim();
-                let html = `<div class="project-card">`;
-                html += `<div class="thumb">`;
-                html += `<img class="thumb-bg" src="${src}" alt="" aria-hidden="true" loading="lazy" onerror="this.style.display='none'">`;
-                html += `<img class="thumb-main" src="${src}" alt="${item.Title}" loading="lazy" onerror="this.src='${FALLBACK}'">`;
-                html += `</div>`;
-                html += `<div class="card-body">`;
-                if (item.url) {
-                    html += `<h4><a target="_blank" rel="noopener" href="${item.url}">${item.Title}</a></h4>`;
-                } else {
-                    html += `<h4>${item.Title}</h4>`;
-                }
-                html += `<div class="meta"><span>${item.Date}</span><span class="cat">${catLabel[item.valid]}</span></div>`;
-                html += `</div></div>`;
-                container.innerHTML += html;
+        //渲染文字版项目（参考Word简历格式：项目名称/时间/项目描述/个人职责）
+        const textView = document.getElementById('projectTextView');
+        const groups = [
+            { valid: 0, name: '儿推项目（青岛儿推铸力 2018 - 至今）' },
+            { valid: 1, name: '聚城项目（青岛聚城 2014 - 2018）' },
+            { valid: 3, name: '其他项目' }
+        ];
+        let textHtml = '';
+        groups.forEach(g => {
+            const items = projectList.filter(p => p.valid == g.valid);
+            if (!items.length) return;
+            textHtml += `<div class="tp-group"><div class="tp-group-title">${g.name}</div>`;
+            items.forEach(item => {
+                const info = projectTextData[item.Title] || {};
+                const nameHtml = item.url
+                    ? `<a target="_blank" href="${item.url}">${item.Title}</a>`
+                    : item.Title;
+                textHtml += `<div class="tp-item">
+                    <div class="tp-head"><span class="tp-name">${nameHtml}</span><span class="tp-date">${item.Date}</span></div>
+                    <div class="tp-desc">${info.desc || ''}</div>
+                    <div class="tp-duty"><b>个人职责：</b>${info.duty || ''}</div>
+                </div>`;
             });
+            textHtml += '</div>';
+        });
+        textView.innerHTML = textHtml;
+
+        //图片版/文字版切换 + 折叠展开
+        const btnImage = document.getElementById('btnImageView');
+        const btnText = document.getElementById('btnTextView');
+        let projectShow = true;
+        let viewMode = 'image'; // image | text
+
+        function applyView() {
+            container.style.display = (projectShow && viewMode === 'image') ? 'grid' : 'none';
+            textView.style.display = (projectShow && viewMode === 'text') ? 'block' : 'none';
+            btnImage.classList.toggle('active', viewMode === 'image');
+            btnText.classList.toggle('active', viewMode === 'text');
         }
 
-        render('all');
-
-        // 筛选
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.onclick = () => {
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                render(btn.dataset.filter);
-            };
-        });
-
-        // 折叠展开
-        let projectShow = true;
+        btnImage.onclick = function () { viewMode = 'image'; applyView(); };
+        btnText.onclick = function () { viewMode = 'text'; applyView(); };
         document.getElementById('toggleProject').onclick = function () {
             projectShow = !projectShow;
-            container.style.display = projectShow ? 'grid' : 'none';
-            this.textContent = projectShow ? '收起 / 展开列表' : '已收起，点击展开';
-        }
+            applyView();
+        };
     </script>
 </body>
 </html>
